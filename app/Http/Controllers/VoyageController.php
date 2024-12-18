@@ -4,15 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Voyage;
 use App\Models\Etape;
+use App\Repositories\IVoyageRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class VoyageController extends Controller
 {
+
+    public function __construct(private IVoyageRepository $voyageRepository)
+    {
+    }
     public function index()
     {
         // Récupérer les voyages marqués "en ligne"
-        $voyages = Voyage::where('en_ligne', true)->get();
+        $voyages = $this->voyageRepository->all(true);
 
         // Retourner la vue avec les données
         return view('journeys.index', compact('voyages'));
@@ -20,7 +25,7 @@ class VoyageController extends Controller
 
     public function show($id)
     {
-        $voyage = Voyage::with(['etapes', 'avis', 'likes'])->findOrFail($id);
+        $voyage = $this->voyageRepository->find($id);
 
         // Vérifie si le voyage est activé ou si l'utilisateur est l'éditeur
         if (!$voyage->en_ligne && auth()->id() !== $voyage->user_id) {
@@ -67,7 +72,7 @@ class VoyageController extends Controller
         }
 
         // Créer le voyage
-        $voyage = Voyage::create([
+        $voyage = $this->voyageRepository->create([
             'titre' => $validated['titre'],
             'description' => $validated['description'],
             'resume' => $validated['resume'],
