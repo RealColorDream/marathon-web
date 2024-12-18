@@ -8,7 +8,7 @@
 
     <!-- UIKit CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/css/uikit.min.css"/>
-
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <!-- Vite Resources -->
     @section("head")
         @vite(["resources/css/normalize.css", "resources/css/app.css", "resources/js/app.js"])

@@ -2,24 +2,28 @@
 
 @section('content')
 <section class="register">
-    <h2 class="connection-title">Créer mon compte</h2>
+    <h1>S'enregistrer</h1>
     <div class="login-form">
-        <i class='bx bx-user'></i>
+    <div>
+        <box-icon name='user'></box-icon>
+        <p class="connection-title">Créer mon compte</p>
+    </div>
+    <hr/>
     <form action="{{route("register")}}" method="post">
         @csrf
-        <div>
+        <div class="fields">
             <label for="name">Nom d'utilisateur</label>
             <input type="text" name="name" required placeholder="Name" />
         </div>
-        <div>
+        <div class="fields">
             <label for="email">E-mail</label>
             <input type="email" name="email" required placeholder="Email" />
         </div>
-        <div>
+        <div class="fields">
             <label for="password">Mot de passe</label>
             <input type="password" name="password" required placeholder="password" />
         </div>
-        <div>
+        <div class="fields">
             <label for="password_confirmation">Vérification mot de passe</label>
             <input type="password" name="password_confirmation" required placeholder="password" />
         </div>
