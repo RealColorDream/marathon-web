@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\VoyageController;
 use Illuminate\Support\Facades\Route;
 
@@ -9,11 +10,11 @@ Route::get('/', [VoyageController::class, 'index'])->name('accueil');
 // Contact
 Route::get('/contact', fn() => view('contact'))->name("contact");
 
-// Tableau de bord
-Route::get('/dashboard', fn() => view('dashboard'))->name("dashboard")->middleware('auth');
+Route::get('/home', [DashboardController::class, 'index'])->name("home")->middleware('auth');
 
 // Redirection de /home vers /dashboard
 Route::get('/home', fn() => redirect()->route('dashboard'));
+Route::get('/dashboard', [DashboardController::class, 'index'])->name("dashboard")->middleware('auth');
 
 // Voyages
 Route::get('/voyages', [VoyageController::class, 'index'])->name('voyages.index');
