@@ -1,5 +1,7 @@
 @extends("templates.app")
-
+@push('css auth')
+    @vite(["resources/css/auth.css", "resources/css/app.css", "resources/js/app.js"])
+@endpush
 @section('content')
 <section class="register">
     <h1>S'enregistrer</h1>
