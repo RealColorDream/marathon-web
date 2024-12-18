@@ -16,19 +16,28 @@ class VoyageController extends Controller
 
     public function index()
     {
-        // Récupérer les voyages marqués "en ligne"
-        $voyages = $this->voyageRepository->all(true);
+        if (Auth::check()) {
+            // Récupérer tous les voyages (publiés et non publiés) de l'utilisateur connecté
+            $voyagesPrives = Voyage::where('user_id', Auth::id())
+                ->where('en_ligne', false) // Voyages non publiés
+                ->get();
 
-        // Retourner la vue avec les données
-        return view('voyages.index', compact('voyages'));
+            $voyagesPublics = Voyage::where('en_ligne', true)->get();
+        } else {
+            // Récupérer uniquement les voyages publics pour les visiteurs
+            $voyagesPublics = Voyage::where('en_ligne', true)->get();
+            $voyagesPrives = collect(); // Collection vide pour les non-connectés
+        }
+
+        return view('voyages.index', compact('voyagesPublics', 'voyagesPrives'));
     }
 
     public function show($id)
     {
-        // Ensure $id is an integer
+        // S'assurer que $id est un entier
         $voyage = $this->voyageRepository->find((int) $id);
 
-        // Vérifie si le voyage est activé ou si l'utilisateur est l'éditeur
+        // Vérifier si le voyage est activé ou si l'utilisateur est le créateur
         if (!$voyage->en_ligne && auth()->id() !== $voyage->user_id) {
             abort(403, 'Vous n\'avez pas accès à ce voyage.');
         }
@@ -72,14 +81,14 @@ class VoyageController extends Controller
             $visuelPath = $request->file('visuel')->store('voyages', 'public');
         }
 
-        // Créer le voyage
-        $voyage = $this->voyageRepository->create([
+        // Créer le voyage (désactivé par défaut)
+        $voyage = Voyage::create([
             'titre' => $validated['titre'],
             'description' => $validated['description'],
             'resume' => $validated['resume'],
             'continent' => $validated['continent'],
             'user_id' => Auth::id(),
-            'en_ligne' => true,
+            'en_ligne' => false, // Désactivé par défaut
             'visuel' => $visuelPath ? asset('storage/' . $visuelPath) : null,
         ]);
 
@@ -94,8 +103,24 @@ class VoyageController extends Controller
             ]);
         }
 
+        return redirect()->route('voyages.index')
+            ->with('success', 'Voyage créé avec succès, mais il est désactivé. Activez-le pour le rendre visible par tous.');
+    }
+
+    public function activate($id)
+    {
+        $voyage = $this->voyageRepository->find($id);
+
+        // Vérifier que l'utilisateur est le créateur du voyage
+        if (Auth::id() !== $voyage->user_id) {
+            abort(403, 'Vous n\'avez pas l\'autorisation d\'activer ce voyage.');
+        }
+
+        // Activer le voyage
+        $voyage->update(['en_ligne' => true]);
+
         return redirect()->route('voyages.show', $voyage->id)
-            ->with('success', 'Voyage créé avec succès !');
+            ->with('success', 'Voyage activé avec succès ! Il est maintenant visible par tous.');
     }
 
     public function continent(Request $request)
