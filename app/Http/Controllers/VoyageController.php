@@ -12,7 +12,10 @@ class VoyageController extends Controller
     public function index()
     {
         // Récupérer les voyages marqués "en ligne"
-        $voyages = Voyage::where('en_ligne', true)->get();
+        $voyages = Voyage::where(function ($query) {
+            $query->where('en_ligne', true)
+                ->orWhere('user_id', Auth::id());
+        })->get();
 
         // Retourner la vue avec les données
         return view('voyages.index', compact('voyages'));
@@ -77,6 +80,8 @@ class VoyageController extends Controller
             'visuel' => $visuelPath ? asset('storage/' . $visuelPath) : null,
         ]);
 
+        dd($voyage);
+
         // Créer les étapes associées
         foreach ($validated['etape_titre'] as $index => $titre) {
             Etape::create([
@@ -88,7 +93,7 @@ class VoyageController extends Controller
             ]);
         }
 
-        return redirect()->route('voyages.show', $voyage->id)
+        return redirect()->route('voyages.index')
             ->with('success', 'Voyage créé avec succès !');
     }
 }
