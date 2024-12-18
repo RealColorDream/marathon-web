@@ -24,6 +24,7 @@ Route::post('/voyages', [VoyageController::class, 'store'])->name('voyages.store
 // Voyages
 Route::get('/voyages', [VoyageController::class, 'index'])->name('voyages.index');
 Route::get('/voyages/{id}', [VoyageController::class, 'show'])->name('voyages.show');
+Route::post('/voyages/{id}/activate', [VoyageController::class, 'activate'])->name('voyages.activate');
 
 Route::get('/etape', [EtapeController::class, 'index'])->name('etape.index');
 Route::get('/etape/{id}', [EtapeController::class, 'show'])->name('etape.show');
