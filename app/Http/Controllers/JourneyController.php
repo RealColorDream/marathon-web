@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Journey;
-use http\Client\Request;
+use Illuminate\Http\Request
 
-class JourneyController extends Controller
+;class JourneyController extends Controller
 {
     public function index(Request $request)
     {
