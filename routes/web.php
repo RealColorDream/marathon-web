@@ -14,9 +14,9 @@ Route::get('/test-vite', function () {
     return view('test-vite');
 })->name("test-vite");
 
-Route::get('/home', [DashboardController::class])->name("home")->middleware('auth');
+Route::get('/home', [DashboardController::class, 'index'])->name("home")->middleware('auth');
 
-Route::get('/dashboard', [DashboardController::class])->name("dashboard")->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name("dashboard")->middleware('auth');
 
 Route::get('/journeys', [JourneyController::class, 'index'])->name('journeys.index');
 

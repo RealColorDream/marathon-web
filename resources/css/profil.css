@@ -1,0 +1,24 @@
+.app-profile {
+    border-radius: 16px;
+    border: 2px solid grey;
+    padding: 24px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-avatar {
+    width: 128px;
+    height: 128px;
+    border-radius: 15%;
+    border: 1px solid grey;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
