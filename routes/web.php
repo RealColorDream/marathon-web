@@ -25,5 +25,6 @@ Route::get('/journeys', [VoyageController::class, 'index'])->name('journeys.inde
 
 Route::get('/voyages/{id}', [VoyageController::class, 'show'])->name('voyages.show');
 
-Route::get('/voyage/create', [VoyageController::class, 'create'])->name('journeys.create')->middleware('auth');
-Route::post('/voyage', [VoyageController::class, 'store'])->name('journeys.store')->middleware('auth');
+Route::get('/voyages/create', [VoyageController::class, 'create'])->name('voyages.create');
+Route::post('/voyages', [VoyageController::class, 'store'])->name('voyages.store');
+
