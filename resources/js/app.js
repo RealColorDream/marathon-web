@@ -15,4 +15,4 @@ function adjustMainHeight() {
     console.log("Nouvelle hauteur:", newHeight, "Hauteur du main:", main.style.height);
 }
 
-adjustMainHeight()
+//adjustMainHeight()
