@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EtapeController;
 use App\Http\Controllers\VoyageController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +24,6 @@ Route::get('/voyages/{id}', [VoyageController::class, 'show'])->name('voyages.sh
 // Création et stockage des voyages
 Route::get('/voyages/create', [VoyageController::class, 'create'])->name('voyages.create');
 Route::post('/voyages', [VoyageController::class, 'store'])->name('voyages.store');
+
+Route::get('/etape', [EtapeController::class, 'index'])->name('etape.index');
+Route::get('/etape/{id}', [EtapeController::class, 'show'])->name('etape.show');
