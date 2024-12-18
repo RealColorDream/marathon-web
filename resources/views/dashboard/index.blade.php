@@ -21,6 +21,28 @@
 
         <p>Text supplémentaire à ajouter plus tard..</p>
 
-        <p>Voyages likés : </p>
+        <p class="user-likes-title">Voyages likés : </p>
+
+        @if($user->likes->isEmpty())
+            <p>Vous n'avez liké aucun voyage.</p>
+        @else
+            <div class="voyage-likes">
+                @foreach($user->likes as $voyage)
+                    <div class="voyage-box">
+                        <!-- Image du voyage -->
+                        <img src="{{ $voyage->visuel }}" alt="Visuel de {{ $voyage->titre }}">
+
+                        <!-- Titre du voyage -->
+                        <h3>{{ $voyage->titre }}</h3>
+
+                        <!-- Résumé -->
+                        <p>{{ $voyage->resume }}</p>
+
+                        <!-- Auteur du voyage -->
+                        <small>Édité par : {{ $voyage->editeur->name }}</small>
+                    </div>
+                @endforeach
+            </div>
+        @endif
     </div>
 @endsection

@@ -2,6 +2,7 @@
     border-radius: 16px;
     border: 2px solid grey;
     padding: 24px;
+    max-width: 80%;
 }
 
 .user-profile {
@@ -21,4 +22,49 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.user-likes-title {
+    color: black;
+    font-size: 115%;
+}
+.voyage-likes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.voyage-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 25%;
+    padding: 15px;
+}
+
+.voyage-box img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.voyage-box h3 {
+    margin: 15px 0 10px;
+    font-size: 18px;
+}
+
+.voyage-box p {
+    color: #666;
+    font-size: 14px;
+}
+
+.voyage-box small {
+    font-size: 12px;
+    color: #888;
 }
