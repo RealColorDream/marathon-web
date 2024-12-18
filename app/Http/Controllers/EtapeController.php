@@ -56,9 +56,14 @@ class EtapeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, EtapeController $etape)
+    public function update(Request $request, int $id_etape)
     {
-        return redirect()->route('etape.show', ['id_etape' => $etape->id]);
+        $etape = Etape::find($id_etape);
+        $etape->titre = $request->input('titre');
+        $etape->resume = $request->input('resume');
+        $etape->save();
+
+        return redirect()->route('etape.show', ['id' => $etape->id]);
     }
 
     /**
