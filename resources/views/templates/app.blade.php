@@ -15,6 +15,7 @@
         @vite(["resources/css/normalize.css", "resources/css/app.css", "resources/js/app.js"])
     @show
     @stack('css auth')
+    @stack("css profile")
 </head>
 <body>
 
@@ -25,9 +26,5 @@
     @yield("content")
 </main>
 
-<footer>
-    <p>IUT de Lens</p>
-</footer>
-@stack('css voyage')
 </body>
 </html>
