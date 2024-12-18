@@ -15,7 +15,7 @@ class VoyageController extends Controller
         $voyages = Voyage::where('en_ligne', true)->get();
 
         // Retourner la vue avec les données
-        return view('journeys.index', compact('voyages'));
+        return view('voyages.index', compact('voyages'));
     }
 
     public function show($id)
@@ -27,12 +27,12 @@ class VoyageController extends Controller
             abort(403, 'Vous n\'avez pas accès à ce voyage.');
         }
 
-        return view('journeys.show', compact('voyage'));
+        return view('voyages.show', compact('voyage'));
     }
 
     public function create()
     {
-        return view('journeys.create-journey');
+        return view('voyages.create-voyage');
     }
 
     public function store(Request $request)
