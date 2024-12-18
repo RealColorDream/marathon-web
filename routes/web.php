@@ -17,13 +17,13 @@ Route::get('/home', [DashboardController::class, 'index'])->name("home")->middle
 Route::get('/home', fn() => redirect()->route('dashboard'));
 Route::get('/dashboard', [DashboardController::class, 'index'])->name("dashboard")->middleware('auth');
 
-// Voyages
-Route::get('/voyages', [VoyageController::class, 'index'])->name('voyages.index');
-Route::get('/voyages/{id}', [VoyageController::class, 'show'])->name('voyages.show');
-
 // Création et stockage des voyages
 Route::get('/voyages/create', [VoyageController::class, 'create'])->name('voyages.create');
 Route::post('/voyages', [VoyageController::class, 'store'])->name('voyages.store');
+
+// Voyages
+Route::get('/voyages', [VoyageController::class, 'index'])->name('voyages.index');
+Route::get('/voyages/{id}', [VoyageController::class, 'show'])->name('voyages.show');
 
 Route::get('/etape', [EtapeController::class, 'index'])->name('etape.index');
 Route::get('/etape/{id}', [EtapeController::class, 'show'])->name('etape.show');

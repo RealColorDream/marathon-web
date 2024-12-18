@@ -10,10 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 class VoyageController extends Controller
 {
-
     public function __construct(private IVoyageRepository $voyageRepository)
     {
     }
+
     public function index()
     {
         // Récupérer les voyages marqués "en ligne"
@@ -25,7 +25,8 @@ class VoyageController extends Controller
 
     public function show($id)
     {
-        $voyage = $this->voyageRepository->find($id);
+        // Ensure $id is an integer
+        $voyage = $this->voyageRepository->find((int) $id);
 
         // Vérifie si le voyage est activé ou si l'utilisateur est l'éditeur
         if (!$voyage->en_ligne && auth()->id() !== $voyage->user_id) {
@@ -81,8 +82,6 @@ class VoyageController extends Controller
             'en_ligne' => true,
             'visuel' => $visuelPath ? asset('storage/' . $visuelPath) : null,
         ]);
-
-        dd($voyage);
 
         // Créer les étapes associées
         foreach ($validated['etape_titre'] as $index => $titre) {
