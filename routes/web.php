@@ -9,9 +9,9 @@ Route::get('/contact', function () {
     return view('contact');
 })->name("contact");
 
-Route::get('/test-vite', function () {
+/*Route::get('/test-vite', function () {
     return view('test-vite');
-})->name("test-vite");
+})->name("test-vite");*/
 
 Route::get('/home', function () {
     return view('dashboard');
