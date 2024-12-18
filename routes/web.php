@@ -22,3 +22,8 @@ Route::get('/dashboard', function () {
 })->name("dashboard")->middleware('auth');
 
 Route::get('/journeys', [JourneyController::class, 'index'])->name('journeys.index');
+
+Route::get('/voyages/{id}', [JourneyController::class, 'show'])->name('voyages.show');
+
+Route::get('/voyage/create', [JourneyController::class, 'create'])->name('journeys.create')->middleware('auth');
+Route::post('/voyage', [JourneyController::class, 'store'])->name('journeys.store')->middleware('auth');
