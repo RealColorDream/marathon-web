@@ -1,20 +1,36 @@
 @extends("templates.app")
-
+@push('css auth')
+    @vite(["resources/css/auth.css", "resources/css/app.css", "resources/js/app.js"])
+@endpush
 @section('content')
-    <h2 class="connection-title">Mon compte</h2>
+<section class="register">
+    <h1>Me connecter</h1>
     <div class="login-form">
-        <img src="" alt="Image utilisateur"/>
-        <h3>Je me connecte</h3>
+        <div>
+            <box-icon name='user'></box-icon>
+            <p class="connection-title">Créer mon compte</p>
+        </div>
         <hr/>
         <form action="{{route("login")}}" method="post">
             @csrf
-            <label for="email">E-mail</label>
-            <input type="email" name="email" required placeholder="Email"/><br/>
-            <label for="password">Mot de passe</label>
-            <input type="password" name="password" required placeholder="password"/><br/>
-            Remember me<input type="checkbox" name="remember"/><br/>
-            <input type="submit" value="Valider"/><br/>
+            <div class="fields">
+                <label for="email">E-mail</label>
+                <input type="email" name="email" required placeholder="Email"/>
+            </div>
+            <div class="fields">
+                <label for="password">Mot de passe</label>
+                <input type="password" name="password" required placeholder="password"/>
+            </div>
+            <div class="remember">
+                <span>Remember me</span>
+                <input type="checkbox" name="remember"/>
+            </div>
+            <input type="submit" value="Valider" class="submitBtn"/><br/>
         </form>
-        Pas de compte ? <a href="{{route("register")}}">Créer un nouveau compte</a>
+        <div class="alrdLog">
+            <span>Pas de compte ?</span> 
+            <a href="{{route("register")}}">Créer un nouveau compte</a>
+        </div>
     </div>
+    </section>
 @endsection

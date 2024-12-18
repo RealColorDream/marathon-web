@@ -13,6 +13,7 @@
     @section("head")
         @vite(["resources/css/normalize.css", "resources/css/app.css", "resources/js/app.js"])
     @show
+    @stack('css auth')
 </head>
 <body>
 
