@@ -19,7 +19,7 @@
 <nav>
     <ul>
         <li><a href="{{ route('accueil') }}">Accueil</a></li>
-        <li><a href="{{ route('journeys.index') }}">Voyages</a></li>
+        <li><a href="{{ route('voyages.index') }}">Voyages</a></li>
 
         @auth
             <li>{{ Auth::user()->name }}</li>
@@ -38,7 +38,7 @@
 </nav>
 
 <header>
-    <form action="{{ route('journeys.index') }}" method="GET" class="uk-search uk-search-default">
+    <form action="{{ route('voyages.index') }}" method="GET" class="uk-search uk-search-default">
         <div class="uk-search-icon-flip" uk-search-icon>
             <input class="uk-search-input" type="search" name="search" placeholder="Search...">
             <button class="uk-search-icon-flip" type="submit" uk-search-icon>Recherche</button>
