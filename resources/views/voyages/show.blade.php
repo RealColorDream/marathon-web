@@ -33,6 +33,12 @@
             </ul>
         @endif
 
+        @if(Auth::id() === $voyage->user_id)
+            <a href="{{ route('etapes.create', $voyage->id) }}" class="uk-button uk-button-secondary uk-margin-top">
+                Ajouter une étape
+            </a>
+        @endif
+
         <h2 class="uk-heading-line"><span>Avis et Likes</span></h2>
         <p><strong>Nombre de likes :</strong> {{ $voyage->likes->count() }}</p>
 
