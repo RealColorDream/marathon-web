@@ -29,7 +29,7 @@ class VoyageController extends Controller
         $voyage = $this->voyageRepository->find($id);
 
         // Vérifie si le voyage est activé ou si l'utilisateur est l'éditeur
-        if (!$voyage->en_ligne || auth()->id() == $voyage->user_id) {
+        if (!$voyage->en_ligne && auth()->id() !== $voyage->user_id) {
             abort(403, 'Vous n\'avez pas accès à ce voyage.');
         }
 
