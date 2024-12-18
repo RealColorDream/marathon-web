@@ -11,11 +11,13 @@
         @endif
 
         <div class="uk-grid-small uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid>
-            @foreach($voyages as $voyage)
+            @forelse($voyages as $voyage)
                 <div>
                     <x-voyage-card :voyage="$voyage"/>
                 </div>
-            @endforeach
+            @empty
+                <p>Aucun voyage disponible pour le moment.</p>
+            @endforelse
         </div>
     </div>
 @endsection

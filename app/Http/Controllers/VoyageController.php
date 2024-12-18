@@ -10,34 +10,35 @@ use Illuminate\Support\Facades\Auth;
 
 class VoyageController extends Controller
 {
-
     public function __construct(private IVoyageRepository $voyageRepository)
     {
     }
+
     public function index()
     {
         // Récupérer les voyages marqués "en ligne"
         $voyages = $this->voyageRepository->all(true);
 
         // Retourner la vue avec les données
-        return view('journeys.index', compact('voyages'));
+        return view('voyages.index', compact('voyages'));
     }
 
     public function show($id)
     {
-        $voyage = $this->voyageRepository->find($id);
+        // Ensure $id is an integer
+        $voyage = $this->voyageRepository->find((int) $id);
 
         // Vérifie si le voyage est activé ou si l'utilisateur est l'éditeur
         if (!$voyage->en_ligne && auth()->id() !== $voyage->user_id) {
             abort(403, 'Vous n\'avez pas accès à ce voyage.');
         }
 
-        return view('journeys.show', compact('voyage'));
+        return view('voyages.show', compact('voyage'));
     }
 
     public function create()
     {
-        return view('create-journey');
+        return view('voyages.create-voyage');
     }
 
     public function store(Request $request)
