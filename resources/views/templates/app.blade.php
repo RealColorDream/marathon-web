@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>{{ $title ?? "Page en cours" }}</title>
@@ -25,6 +25,7 @@
 <main>
     @yield("content")
 </main>
+
 
 </body>
 </html>

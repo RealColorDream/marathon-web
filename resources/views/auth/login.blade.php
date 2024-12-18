@@ -1,4 +1,5 @@
 @extends("templates.app")
+
 @push('css auth')
     @vite(["resources/css/auth.css", "resources/css/app.css", "resources/js/app.js"])
 @endpush

@@ -68,15 +68,15 @@
     color: #888;
 }
 .van {
-    position: absolute; 
+    position: absolute;
     transform: translateY(-50%);
     z-index: 99999;
     left: 0;
     bottom: 16%;
-    
+
     animation: van-life 3.8s linear infinite;
   }
-  
+
   /* Animation pour rouler et traverser l'écran */
   @keyframes van-life {
     0% {
@@ -86,7 +86,7 @@
       transform: translate(100vw, -50%);
     }
   }
-body { 
+body {
     background:
     bottom 0 right 50% /100% url('/resources/images/route3.svg'),
     top 20% left 0 url('/resources/images/nuage3.svg'),
@@ -97,7 +97,7 @@ body {
     overflow: hidden;
     height: 100vh;
     }
-    
+
 main{
     height: 100%;
 }
