@@ -1,0 +1,28 @@
+.dropdown {
+    margin-bottom: 20px;
+}
+
+.voyage-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #fff;
+    display: flex;
+    gap: 15px;
+}
+
+.voyage-card img {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.voyage-details h3 {
+    margin: 0;
+}
+
+.voyage-details p {
+    color: #666;
+}

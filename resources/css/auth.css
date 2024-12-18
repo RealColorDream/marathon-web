@@ -1,0 +1,135 @@
+.login-form>form>div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.login-form{
+    border: solid 1px #191919;
+    border-radius: 16px;
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 77%, rgba(255,230,208,1) 100%);
+}
+.login-form>form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.register{
+    min-width: 500px;
+}
+
+.alrdLog{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row !important;
+    justify-content: center;
+}
+
+.alrdLog span{
+    margin-right: 1rem;
+}
+.login-form{
+    padding: 10%;
+}
+
+.register input:focus{
+    border: solid 1px #FF8D29;
+}
+.register input:focus-visible{
+    outline:none;
+}
+.submitBtn{
+    font-family: 'Newwake';
+    background-color: #FF8D29;
+    color: white;
+    border: solid 3px #FF9C45;
+    border-radius: 32px;
+    padding: 16px 80px;
+    text-transform: uppercase;
+}
+.fields input{
+    border-radius: 8px;
+    height: 64px;
+    background: none;
+    border: solid 1px #858585;
+    font-family: 'Oswald-Extra-Light';
+    width: 90%;
+    margin-top: 0.8rem;
+    padding-left: 1rem;
+}
+.fields{
+    width: 100%;
+    margin-bottom: 2rem;
+}
+.register label{
+    font-family: 'Oswald-Regular';
+    align-self: flex-start;
+    margin-left: 4.5%;
+}
+.register h1{
+    font-size: 72px;
+    color: #FF8D29;
+    font-family: 'Newwake';
+}
+
+.register p{
+    margin-top: 5px;
+    font-family: 'Oswald-Extra-Light';
+    font-size: 32px;
+}
+
+.register box-icon{
+    min-width: 88px;
+    min-height: 88px;
+}
+
+.remember{
+    display: flex;
+    flex-direction: row !important;
+    justify-content: space-between;
+    width: 35%;
+    padding-bottom: 1rem;
+}
+
+body {
+/*    background: rgb(103,207,255);*/
+    background: /*linear-gradient(180deg, rgba(103,207,255,1) 0%, rgba(169,205,251,1) 100%)*/
+    bottom 0 right 0  url('/resources/images/montagne2.svg'),
+    bottom 0 left 0 url('/resources/images/montagne1.svg'),
+    top 40% left 15% url('/resources/images/nuage1.svg'),
+    top 80% right 20% url('/resources/images/nuage2.svg'),
+    linear-gradient(180deg, rgba(103,207,255,1) 0%, rgba(169,205,251,1) 100%);
+    background-repeat: no-repeat;
+}
+
+#nuage1{
+    position: absolute;
+    top: 30%;
+    left: 15%;
+    z-index: 0;
+}
+
+#nuage2{
+    position: absolute;
+    top: 0;
+    right: 80%;
+    z-index: 0;
+}
+
+#montagne1 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#montagne2 {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+section {
+    z-index: 2;
+}
