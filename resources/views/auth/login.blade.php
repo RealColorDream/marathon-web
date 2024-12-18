@@ -1,14 +1,16 @@
 @extends("templates.app")
+
 @push('css auth')
     @vite(["resources/css/auth.css", "resources/css/app.css", "resources/js/app.js"])
 @endpush
+
 @section('content')
 <section class="register">
     <h1>Me connecter</h1>
     <div class="login-form">
         <div>
             <box-icon name='user'></box-icon>
-            <p class="connection-title">Créer mon compte</p>
+            <p class="connection-title">Connexion</p>
         </div>
         <hr/>
         <form action="{{route("login")}}" method="post">

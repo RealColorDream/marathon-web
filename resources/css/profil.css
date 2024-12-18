@@ -1,9 +1,9 @@
 .app-profile {
     text-align: left;
     border-radius: 16px;
-    border: 2px solid grey;
-    padding: 24px;
-    max-width: 80%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10%;
 }
 
 .user-profile {
@@ -15,8 +15,7 @@
 .user-avatar {
     width: 128px;
     height: 128px;
-    border-radius: 15%;
-    border: 1px solid grey;
+    border-radius: 50%;
 }
 
 .user-details {
@@ -68,4 +67,39 @@
 .voyage-box small {
     font-size: 12px;
     color: #888;
+}
+.van {
+    position: absolute; 
+    transform: translateY(-50%);
+    z-index: 99999;
+    left: 0;
+    bottom: 50px;
+    
+    animation: van-life 3.8s linear infinite;
+  }
+  
+  /* Animation pour rouler et traverser l'écran */
+  @keyframes van-life {
+    0% {
+      transform: translate(-100%, -50%);
+    }
+    100% {
+      transform: translate(100vw, -50%);
+    }
+  }
+body { 
+    background:
+    bottom 0 right 50% /100% url('/resources/images/route3.svg'),
+    top 20% left 0 url('/resources/images/nuage3.svg'),
+    top 40% right 0 url('/resources/images/nuage4.svg'),
+    top 60% left 0 url('/resources/images/nuage5.svg'),
+    linear-gradient(180deg, rgba(103,207,255,1) 0%, rgba(169,205,251,1) 100%);
+    background-repeat: no-repeat;
+    }
+    
+
+.profile{
+    position: relative;
+    width: 100%;
+    height: 100vh;
 }
