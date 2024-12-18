@@ -1,10 +1,9 @@
 <?php
 
+use App\Http\Controllers\JourneyController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name("accueil");
+Route::get('/', [JourneyController::class, 'index'])->name('accueil');
 
 Route::get('/contact', function () {
     return view('contact');
@@ -16,9 +15,10 @@ Route::get('/test-vite', function () {
 
 Route::get('/home', function () {
     return view('dashboard');
-})->name("home") -> middleware('auth');
+})->name("home")->middleware('auth');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->name("dashboard") -> middleware('auth');
+})->name("dashboard")->middleware('auth');
 
+Route::get('/journeys', [JourneyController::class, 'index'])->name('journeys.index');
