@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- UIKit CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/css/uikit.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/css/uikit.min.css"/>
 
     <!-- Vite Resources -->
     @section("head")
@@ -15,9 +15,7 @@
     @show
 </head>
 <body>
-<header>
 
-</header>
 <nav>
     <ul>
         <li><a href="{{ route('accueil') }}">Accueil</a></li>
@@ -38,6 +36,16 @@
         @endauth
     </ul>
 </nav>
+
+<header>
+    <form action="{{ route('journeys.index') }}" method="GET" class="uk-search uk-search-default">
+        <div class="uk-search-icon-flip" uk-search-icon>
+            <input class="uk-search-input" type="search" name="search" placeholder="Search...">
+            <button class="uk-search-icon-flip" type="submit" uk-search-icon>Recherche</button>
+        </div>
+    </form>
+    <img src="" alt="logo">
+</header>
 
 <main>
     @yield("content")
