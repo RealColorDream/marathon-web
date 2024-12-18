@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Journey;
+use http\Client\Request;
+
 class JourneyController extends Controller
 {
     public function index(Request $request)
