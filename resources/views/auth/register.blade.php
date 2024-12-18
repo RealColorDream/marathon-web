@@ -30,21 +30,10 @@
                     <input type="password" name="password_confirmation" required placeholder="password"/>
                 </div>
                 <input type="submit" value="Valider" class="submitBtn"/>
-                <div id="alrdLog">
+                <div class="alrdLog">
                     <span>Déjà un compte ?</span>
                     <a href="{{route("login")}}">Connectez vous</a>
                 </div>
             </form>
         </div>
-    </section>
-{{--
-    <div>
-        <img id="nuage1" src="{{ Vite::asset('resources/images/nuage1.svg') }}">
-        <img id="nuage2" src="{{ Vite::asset('resources/images/nuage2.svg') }}">
-    </div>
-
-    <div id="montagne">
-        <img id="montagne1" src="{{ Vite::asset('resources/images/montagne1.svg') }}" alt="montage1">
-        <img id="montagne2" src="{{ Vite::asset('resources/images/montagne2.svg') }}" alt="montage2">
-    </div>--}}
 @endsection
