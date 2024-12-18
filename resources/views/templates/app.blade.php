@@ -16,13 +16,12 @@
 </head>
 <body>
 <header>
-    <h1>Ma super application</h1>
+
 </header>
 <nav>
     <ul>
         <li><a href="{{ route('accueil') }}">Accueil</a></li>
-        <li><a href="{{ route('test-vite') }}">Test Vite</a></li>
-        <li><a href="{{ route('contact') }}">Contact</a></li>
+        <li><a href="{{ route('journeys.index') }}">Voyages</a></li>
 
         @auth
             <li>{{ Auth::user()->name }}</li>
@@ -36,7 +35,6 @@
             </li>
         @else
             <li><a href="{{ route('login') }}">Login</a></li>
-            <li><a href="{{ route('register') }}">Register</a></li>
         @endauth
     </ul>
 </nav>
