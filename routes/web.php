@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\JourneyController;
+use App\Http\Controllers\VoyageController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [JourneyController::class, 'index'])->name('accueil');
+Route::get('/', [VoyageController::class, 'index'])->name('accueil');
 
 Route::get('/contact', function () {
     return view('contact');
@@ -21,9 +21,9 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->name("dashboard")->middleware('auth');
 
-Route::get('/journeys', [JourneyController::class, 'index'])->name('journeys.index');
+Route::get('/journeys', [VoyageController::class, 'index'])->name('journeys.index');
 
-Route::get('/voyages/{id}', [JourneyController::class, 'show'])->name('voyages.show');
+Route::get('/voyages/{id}', [VoyageController::class, 'show'])->name('voyages.show');
 
-Route::get('/voyage/create', [JourneyController::class, 'create'])->name('journeys.create')->middleware('auth');
-Route::post('/voyage', [JourneyController::class, 'store'])->name('journeys.store')->middleware('auth');
+Route::get('/voyage/create', [VoyageController::class, 'create'])->name('journeys.create')->middleware('auth');
+Route::post('/voyage', [VoyageController::class, 'store'])->name('journeys.store')->middleware('auth');
