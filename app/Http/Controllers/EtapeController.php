@@ -58,7 +58,7 @@ class EtapeController extends Controller
      */
     public function update(Request $request, EtapeController $etape)
     {
-        //
+        return redirect()->route('etape.show', ['id_etape' => $etape->id]);
     }
 
     /**

@@ -15,6 +15,7 @@
                         @endforeach
                         <h3 class="uk-card-title">{{ $etape->titre }}</h3>
                         <a href="{{ route('etape.show', $etape->id) }}" class="uk-button uk-button-primary">Voir le etape</a>
+                        <p>{{$etape->resume}}</p>
                     </div>
                 </div>
             @endforeach

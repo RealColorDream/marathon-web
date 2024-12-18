@@ -14,7 +14,7 @@
                              class="uk-width-1-1 uk-margin-small-bottom">
                     @endforeach
                     <h3 class="uk-card-title">{{ $etape->titre }}</h3>
-                    <p>{{ $etape->resume }}</p>
+                    <p>{{ $etape->description }}</p>
                 </div>
             </div>
         </div>

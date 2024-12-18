@@ -27,3 +27,5 @@ Route::post('/voyages', [VoyageController::class, 'store'])->name('voyages.store
 
 Route::get('/etape', [EtapeController::class, 'index'])->name('etape.index');
 Route::get('/etape/{id}', [EtapeController::class, 'show'])->name('etape.show');
+Route::get('/etape/{id}/edit', [EtapeController::class, 'edit'])->name('etape.edit');
+Route::put('/etape/{id}', [EtapeController::class, 'update'])->name('etape.update');
