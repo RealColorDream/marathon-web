@@ -97,4 +97,15 @@ class VoyageController extends Controller
         return redirect()->route('voyages.show', $voyage->id)
             ->with('success', 'Voyage créé avec succès !');
     }
+
+    public function continent(Request $request)
+    {
+        $continent = $request->query('c', 'Europe'); // Par défaut, Europe
+
+        $voyages = Voyage::where('continent', $continent)->get();
+
+        $continents = ["Afrique", "Amérique", "Asie", "Europe", "Océanie"];
+
+        return view('voyages.continent', compact('voyages', 'continent', 'continents'));
+    }
 }

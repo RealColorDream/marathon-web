@@ -21,6 +21,9 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name("dashboard
 Route::get('/voyages/create', [VoyageController::class, 'create'])->name('voyages.create');
 Route::post('/voyages', [VoyageController::class, 'store'])->name('voyages.store');
 
+// Voyages par continent
+Route::get('/voyages/continent', [VoyageController::class, 'continent'])->name('voyages.continent');
+
 // Voyages
 Route::get('/voyages', [VoyageController::class, 'index'])->name('voyages.index');
 Route::get('/voyages/{id}', [VoyageController::class, 'show'])->name('voyages.show');
