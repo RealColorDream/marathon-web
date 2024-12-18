@@ -23,9 +23,12 @@
             <label for="password_confirmation">Vérification mot de passe</label>
             <input type="password" name="password_confirmation" required placeholder="password" />
         </div>
-        <input type="submit" value="Valider"/>
+        <input type="submit" value="Valider" class="submitBtn"/>
+        <div id="alrdLog">
+            <span>Déjà un compte ?</span>
+            <a href="{{route("login")}}">Connectez vous</a>
+        </div>
     </form>
-    Déjà un compte ? <a href="{{route("login")}}">Connectez vous</a>
     </div>
 </section>
 @endsection
