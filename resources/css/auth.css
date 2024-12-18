@@ -7,7 +7,7 @@
     border: solid 1px #191919;
     border-radius: 16px;
     background: rgb(255,255,255);
-    background: linear-gradient(180deg, rgba(255,255,255,1) 77%, rgba(255,230,208,1) 100%); 
+    background: linear-gradient(180deg, rgba(255,255,255,1) 77%, rgba(255,230,208,1) 100%);
 }
 .login-form>form{
     display: flex;
@@ -87,14 +87,21 @@
 
 
 background-image {
-    
+
 }
 body {
     background: rgb(103,207,255);
-    background: linear-gradient(180deg, rgba(103,207,255,1) 0%, rgba(169,205,251,1) 100%); 
-    background-image: url('/resources/images/montagne1.svg'), 
-    url('/resources/images/montagne2.svg');
-    background-repeat: no-repeat;
-}
+    background: linear-gradient(180deg, rgba(103,207,255,1) 0%, rgba(169,205,251,1) 100%);
 
+/*    background-image: url('/resources/images/montagne1.svg'),
+    url('/resources/images/montagne2.svg');
+    background-repeat: no-repeat;*/
+
+    montagne2 {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+
+}
 
