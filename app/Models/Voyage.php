@@ -34,4 +34,10 @@ class Voyage extends Model {
             'en_ligne' => 'boolean',
         ];
     }
+
+    public function isVisible($userId = null)
+    {
+        return $this->en_ligne || $this->user_id === $userId;
+    }
+
 }
