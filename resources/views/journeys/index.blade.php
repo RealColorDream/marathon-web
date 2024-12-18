@@ -1,14 +1,21 @@
 @extends('templates.app')
 
-@section('title', 'Tous les Voyages')
+@section('title', 'Accueil')
 
-    @section('content')
-        <div class="container mx-auto">
-            <h1 class="text-3xl font-bold">Explorez nos voyages</h1>
-            <div class="grid grid-cols-3 gap-6 mt-6">
-                @foreach ($journeys as $journey)
-                    <x-journey-card :journey="$journey" />
-                @endforeach
-            </div>
+@section('content')
+    <div class="uk-container uk-margin-large-top">
+        <h1 class="uk-heading-line"><span>Nos Voyages</span></h1>
+        <div class="uk-grid-small uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid>
+            @foreach($voyages as $voyage)
+                <div>
+                    <div class="uk-card uk-card-default uk-card-hover uk-card-body">
+                        <img src="{{ $voyage->visuel }}" alt="{{ $voyage->titre }}" class="uk-width-1-1 uk-margin-small-bottom">
+                        <h3 class="uk-card-title">{{ $voyage->titre }}</h3>
+                        <p>{{ $voyage->resume }}</p>
+                        <p><strong>Continent : </strong>{{ $voyage->continent }}</p>
+                    </div>
+                </div>
+            @endforeach
         </div>
-    @endsection
+    </div>
+@endsection

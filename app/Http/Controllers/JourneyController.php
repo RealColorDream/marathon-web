@@ -2,20 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Journey;
+use App\Models\Voyage;
 use Illuminate\Http\Request
 
 ;class JourneyController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $query = Journey::query();
+        // Récupérer les voyages marqués "en ligne"
+        $voyages = Voyage::where('en_ligne', true)->get();
 
-        if ($request->has('continent')) {
-            $query->where('continent', $request->input('continent'));
-        }
-
-        $journeys = $query->orderBy('created_at', 'desc')->get();
-        return view('journeys.index', compact('journeys'));
+        // Retourner la vue avec les données
+        return view('journeys.index', compact('voyages'));
     }
 }
