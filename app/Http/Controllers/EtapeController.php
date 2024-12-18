@@ -27,7 +27,7 @@ class EtapeController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     */
+     Route::delete('/etape/{id}', [EtapeController::class, 'destroy'])->name('etape.destroy');
     public function store(Request $request)
     {
         //
@@ -69,8 +69,11 @@ class EtapeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(EtapeController $etape)
+    public function destroy(int $id_etape)
     {
-        //
+        $etape = Etape::find($id_etape);
+        $etape->delete();
+
+        return redirect()->route('etape.index');
     }
 }
