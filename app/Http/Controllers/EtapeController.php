@@ -4,16 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\Etape;
 use App\Models\Media;
+use App\Repositories\IEtapeRepository;
 use Illuminate\Http\Request;
 
 class EtapeController extends Controller
 {
+
+    public function __construct(private IEtapeRepository $etapeRepository)
+    {
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $etape = Etape::all();
+        $etape = $this->etapeRepository->all();
         return view('etapes.index', ['etapes' => $etape]);
     }
 
@@ -39,7 +44,7 @@ class EtapeController extends Controller
     public function show(int $id_etape)
     {
 
-        $etape = Etape::find($id_etape);
+        $etape = $this->etapeRepository->find($id_etape);
         $medias = $etape->medias;
 
         return view('etapes.show', ['etape' => $etape, 'medias' => $medias]);
@@ -49,7 +54,7 @@ class EtapeController extends Controller
      */
     public function edit(int $id_etape)
     {
-        $etape = Etape::find($id_etape);
+        $etape = $this->etapeRepository->find($id_etape);
         return view('etapes.edit', ['etape' => $etape]);
     }
 
@@ -58,7 +63,7 @@ class EtapeController extends Controller
      */
     public function update(Request $request, int $id_etape)
     {
-        $etape = Etape::find($id_etape);
+        $etape = $this->etapeRepository->find($id_etape);
         $etape->titre = $request->input('titre');
         $etape->resume = $request->input('resume');
         $etape->save();
@@ -71,7 +76,7 @@ class EtapeController extends Controller
      */
     public function destroy(int $id_etape)
     {
-        $etape = Etape::find($id_etape);
+        $etape = $this->etapeRepository->find($id_etape);
         $etape->delete();
 
         return redirect()->route('etape.index');
