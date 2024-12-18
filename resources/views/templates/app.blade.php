@@ -55,6 +55,6 @@
 <footer>
     <p>IUT de Lens</p>
 </footer>
-
+@stack('css voyage')
 </body>
 </html>
