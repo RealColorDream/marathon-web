@@ -22,7 +22,7 @@
         <li><a href="{{ route('voyages.index') }}">Voyages</a></li>
 
         @auth
-            <li>{{ Auth::user()->name }}</li>
+            <li><a href="{{ route('dashboard') }}">{{ Auth::user()->name }}</a></li>
             <li>
                 <a href="{{ route('logout') }}" onclick="document.getElementById('logout').submit(); return false;">
                     Logout
