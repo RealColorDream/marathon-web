@@ -89,19 +89,44 @@
 background-image {
 
 }
+
 body {
-    background: rgb(103,207,255);
-    background: linear-gradient(180deg, rgba(103,207,255,1) 0%, rgba(169,205,251,1) 100%);
-
-/*    background-image: url('/resources/images/montagne1.svg'),
-    url('/resources/images/montagne2.svg');
-    background-repeat: no-repeat;*/
-
-    montagne2 {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-    }
-
+/*    background: rgb(103,207,255);*/
+    background: /*linear-gradient(180deg, rgba(103,207,255,1) 0%, rgba(169,205,251,1) 100%)*/
+    bottom 0 right 0  url('/resources/images/montagne2.svg'),
+    bottom 0 left 0 url('/resources/images/montagne1.svg'),
+    top 30% left 15% url('/resources/images/nuage1.svg'),
+    top 0 right 80% url('/resources/images/nuage2.svg'),
+    linear-gradient(180deg, rgba(103,207,255,1) 0%, rgba(169,205,251,1) 100%);
+    background-repeat: no-repeat;
 }
 
+#nuage1{
+    position: absolute;
+    top: 30%;
+    left: 15%;
+    z-index: 0;
+}
+
+#nuage2{
+    position: absolute;
+    top: 0;
+    right: 80%;
+    z-index: 0;
+}
+
+#montagne1 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#montagne2 {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+section {
+    z-index: 2;
+}

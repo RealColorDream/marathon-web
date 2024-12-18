@@ -37,8 +37,14 @@
             </form>
         </div>
     </section>
-    <div id="montagne">
-        <img src="{{ Vite::asset('resources/images/montagne1.svg') }}" alt="montage1">
-        <img id="montagne2" src="{{ Vite::asset('resources/images/montagne2.svg') }}" alt="montage2">
+{{--
+    <div>
+        <img id="nuage1" src="{{ Vite::asset('resources/images/nuage1.svg') }}">
+        <img id="nuage2" src="{{ Vite::asset('resources/images/nuage2.svg') }}">
     </div>
+
+    <div id="montagne">
+        <img id="montagne1" src="{{ Vite::asset('resources/images/montagne1.svg') }}" alt="montage1">
+        <img id="montagne2" src="{{ Vite::asset('resources/images/montagne2.svg') }}" alt="montage2">
+    </div>--}}
 @endsection
