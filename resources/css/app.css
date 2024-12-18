@@ -1,3 +1,9 @@
+@font-face {
+    font-family:'Newwake';
+    src: local("Newake-Font-Demo"),
+    url('/resources/fonts/Newwake/Newake-Font-Demo.otf');
+}
+
 html {
     position: relative;
     min-height: 100%;
@@ -34,4 +40,45 @@ footer {
     border: 1px solid #333;
     border-radius: 5px;
     box-shadow: #333333 2px 2px 2px;
+}
+
+
+
+/* fomulaires de login et register*/
+.login-form>form>div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.login-form>form{
+    border: solid 2px rgba(66, 66, 66, 0.451);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.register{
+    width: 30%;
+    height: 30vh;
+}
+
+#alrdLog{
+    display: flex;
+    flex-direction: row;
+}
+
+.register input:focus{
+    border: solid 1px #FF8D29;
+}
+.register input:focus-visible{
+    outline:none;
+}
+.submitBtn{
+    font-family: 'Newwake';
+    background-color: #FF8D29;
+    color: white;
+    border: solid 3px #FF9C45;
+    border-radius: 8px;
+    padding: 8px 32px;
 }
