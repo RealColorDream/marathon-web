@@ -4,7 +4,7 @@
 ])
 
 <div {{ $attributes->class(['uk-card uk-card-default uk-card-hover uk-card-body']) }}>
-    <img src="{{ $voyage->visuel }}" alt="{{ $voyage->titre }}" class="uk-width-1-1 uk-margin-small-bottom">
+    <img src="{{ $voyage->visuel }}" alt="{{ $voyage->titre }}">
     <h3 class="uk-card-title">{{ $voyage->titre }}</h3>
     <p>{{ $voyage->resume }}</p>
     <p><strong>Continent : </strong>{{ $voyage->continent }}</p>
