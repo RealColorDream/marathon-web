@@ -3,6 +3,16 @@
     src: local("Newake-Font-Demo"),
     url('/resources/fonts/Newwake/Newake-Font-Demo.otf');
 }
+@font-face {
+    font-family: 'Oswald-Regular';
+    src: local("Oswald-Regular"),
+    url('/resources/fonts/Oswald/Oswald-Regular.ttf');
+}
+@font-face {
+    font-family: 'Oswald-Extra-Light';
+    src: local("Oswald-Extra-Light"),
+    url('/resources/fonts/Oswald/Oswald-ExtraLight.ttf');
+}
 
 html {
     position: relative;
@@ -48,24 +58,37 @@ footer {
 .login-form>form>div{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
 }
-
+.login-form{
+    border: solid 1px #191919;
+    border-radius: 16px;
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 77%, rgba(255,230,208,1) 100%); 
+}
 .login-form>form{
-    border: solid 2px rgba(66, 66, 66, 0.451);
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-evenly;
 }
 
 .register{
     width: 30%;
-    height: 30vh;
 }
 
 #alrdLog{
+    margin-top: 2rem;
     display: flex;
     flex-direction: row;
+    justify-content: center;
+}
+
+#alrdLog span{
+    margin-right: 1rem;
+}
+.login-form{
+    padding: 10%;
 }
 
 .register input:focus{
@@ -79,6 +102,42 @@ footer {
     background-color: #FF8D29;
     color: white;
     border: solid 3px #FF9C45;
+    border-radius: 32px;
+    padding: 16px 80px;
+    text-transform: uppercase;
+}
+.fields input{
     border-radius: 8px;
-    padding: 8px 32px;
+    height: 64px;
+    background: none;
+    border: solid 1px #858585;
+    font-family: 'Oswald-Extra-Light';
+    width: 90%;
+    margin-top: 0.8rem;
+    padding-left: 1rem;
+}
+.fields{
+    width: 100%;
+    margin-bottom: 2rem;
+}
+.register label{
+    font-family: 'Oswald-Regular';
+    align-self: flex-start;
+    margin-left: 4.5%;
+}
+.register h1{
+    font-size: 72px;
+    color: #FF8D29;
+    font-family: 'Newwake';
+}
+
+.register p{
+    margin-top: 5px;
+    font-family: 'Oswald-Extra-Light';
+    font-size: 32px;
+}
+
+.register box-icon{
+    min-width: 88px;
+    min-height: 88px;
 }
