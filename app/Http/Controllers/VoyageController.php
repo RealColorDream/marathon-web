@@ -16,11 +16,20 @@ class VoyageController extends Controller
 
     public function index()
     {
-        // Récupérer les voyages activés pour les utilisateurs normaux,
-        // et inclure les voyages désactivés si l'utilisateur est connecté (créateur)
-        $voyages = $this->voyageRepository->all(Auth::check());
+        if (Auth::check()) {
+            // Récupérer tous les voyages (publiés et non publiés) de l'utilisateur connecté
+            $voyagesPrives = Voyage::where('user_id', Auth::id())
+                ->where('en_ligne', false) // Voyages non publiés
+                ->get();
 
-        return view('voyages.index', compact('voyages'));
+            $voyagesPublics = Voyage::where('en_ligne', true)->get();
+        } else {
+            // Récupérer uniquement les voyages publics pour les visiteurs
+            $voyagesPublics = Voyage::where('en_ligne', true)->get();
+            $voyagesPrives = collect(); // Collection vide pour les non-connectés
+        }
+
+        return view('voyages.index', compact('voyagesPublics', 'voyagesPrives'));
     }
 
     public function show($id)
@@ -73,7 +82,7 @@ class VoyageController extends Controller
         }
 
         // Créer le voyage (désactivé par défaut)
-        $voyage = $this->voyageRepository->create([
+        $voyage = Voyage::create([
             'titre' => $validated['titre'],
             'description' => $validated['description'],
             'resume' => $validated['resume'],
@@ -94,7 +103,7 @@ class VoyageController extends Controller
             ]);
         }
 
-        return redirect()->route('voyages.show', $voyage->id)
+        return redirect()->route('voyages.index')
             ->with('success', 'Voyage créé avec succès, mais il est désactivé. Activez-le pour le rendre visible par tous.');
     }
 
