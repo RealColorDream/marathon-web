@@ -4,16 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Voyage;
 use App\Models\Etape;
+use App\Repositories\IVoyageRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 
 class VoyageController extends Controller
 {
+
+    public function __construct(private IVoyageRepository $voyageRepository)
+    {
+    }
     public function index()
     {
         // Récupérer les voyages marqués "en ligne"
-        $voyages = Voyage::where('en_ligne', true)->get();
+        $voyages = $this->voyageRepository->all(true);
 
         // Retourner la vue avec les données
         return view('journeys.index', compact('voyages'));
@@ -21,7 +25,7 @@ class VoyageController extends Controller
 
     public function show($id)
     {
-        $voyage = Voyage::with(['etapes', 'avis', 'likes'])->findOrFail($id);
+        $voyage = $this->voyageRepository->find($id);
 
         // Vérifie si le voyage est activé ou si l'utilisateur est l'éditeur
         if (!$voyage->en_ligne && auth()->id() !== $voyage->user_id) {
@@ -33,12 +37,12 @@ class VoyageController extends Controller
 
     public function create()
     {
-        return view('journeys.create');
+        return view('create-journey');
     }
 
     public function store(Request $request)
     {
-        // Valider les données
+        // Valider les données principales
         $validated = $request->validate([
             'titre' => 'required|string|max:255',
             'description' => 'required|string',
@@ -49,8 +53,17 @@ class VoyageController extends Controller
             'etape_titre.*' => 'required|string|max:255',
             'etape_description.*' => 'required|string',
             'etape_debut.*' => 'required|date',
-            'etape_fin.*' => 'required|date|after:etape_debut.*',
+            'etape_fin.*' => 'required|date',
         ]);
+
+        // Validation des dates dynamiques (fin > début)
+        foreach ($validated['etape_debut'] as $index => $debut) {
+            if (strtotime($validated['etape_fin'][$index]) <= strtotime($debut)) {
+                return back()->withErrors([
+                    'etape_fin.' . $index => 'La date de fin doit être après la date de début pour l\'étape ' . ($index + 1),
+                ])->withInput();
+            }
+        }
 
         // Gérer le fichier visuel
         $visuelPath = null;
@@ -59,7 +72,7 @@ class VoyageController extends Controller
         }
 
         // Créer le voyage
-        $voyage = Voyage::create([
+        $voyage = $this->voyageRepository->create([
             'titre' => $validated['titre'],
             'description' => $validated['description'],
             'resume' => $validated['resume'],
@@ -69,7 +82,7 @@ class VoyageController extends Controller
             'visuel' => $visuelPath ? asset('storage/' . $visuelPath) : null,
         ]);
 
-        // Créer les étapes
+        // Créer les étapes associées
         foreach ($validated['etape_titre'] as $index => $titre) {
             Etape::create([
                 'titre' => $titre,

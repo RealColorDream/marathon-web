@@ -43,7 +43,7 @@ class MediasSeeder extends Seeder {
             }
             $id = Etape::where('titre', $nom)->first();
             if ($id === null) {
-                echo "Etape $nom non trouvée\n";
+                echo "EtapeController $nom non trouvée\n";
                 continue;
             }
             //$nom = str_replace('.*([0-9]*)', '', $nom);

@@ -7,22 +7,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- UIKit CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/css/uikit.min.css" />
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/css/uikit.min.css"/>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <!-- Vite Resources -->
     @section("head")
         @vite(["resources/css/normalize.css", "resources/css/app.css", "resources/js/app.js"])
     @show
 </head>
 <body>
-<header>
-    <h1>Ma super application</h1>
-</header>
+
 <nav>
     <ul>
         <li><a href="{{ route('accueil') }}">Accueil</a></li>
-        <li><a href="{{ route('test-vite') }}">Test Vite</a></li>
-        <li><a href="{{ route('contact') }}">Contact</a></li>
+        <li><a href="{{ route('voyages.index') }}">Voyages</a></li>
 
         @auth
             <li><a href="{{ route('dashboard') }}">{{ Auth::user()->name }}</a></li>
@@ -40,6 +37,16 @@
         @endauth
     </ul>
 </nav>
+
+<header>
+    <form action="{{ route('voyages.index') }}" method="GET" class="uk-search uk-search-default">
+        <div class="uk-search-icon-flip" uk-search-icon>
+            <input class="uk-search-input" type="search" name="search" placeholder="Search...">
+            <button class="uk-search-icon-flip" type="submit" uk-search-icon>Recherche</button>
+        </div>
+    </form>
+    <img src="" alt="logo">
+</header>
 
 <main>
     @yield("content")
