@@ -25,7 +25,7 @@
         <li><a href="{{ route('contact') }}">Contact</a></li>
 
         @auth
-            <li>{{ Auth::user()->name }}</li>
+            <li><a href="{{ route('dashboard') }}">{{ Auth::user()->name }}</a></li>
             <li>
                 <a href="{{ route('logout') }}" onclick="document.getElementById('logout').submit(); return false;">
                     Logout
