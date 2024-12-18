@@ -8,7 +8,7 @@
 
     <!-- UIKit CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/css/uikit.min.css"/>
-
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <!-- Vite Resources -->
     @section("head")
         @vite(["resources/css/normalize.css", "resources/css/app.css", "resources/js/app.js"])
@@ -22,7 +22,7 @@
         <li><a href="{{ route('voyages.index') }}">Voyages</a></li>
 
         @auth
-            <li>{{ Auth::user()->name }}</li>
+            <li><a href="{{ route('dashboard') }}">{{ Auth::user()->name }}</a></li>
             <li>
                 <a href="{{ route('logout') }}" onclick="document.getElementById('logout').submit(); return false;">
                     Logout
