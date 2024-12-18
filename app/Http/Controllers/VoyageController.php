@@ -32,7 +32,7 @@ class VoyageController extends Controller
 
     public function create()
     {
-        return view('create-journey');
+        return view('journeys.create-journey');
     }
 
     public function store(Request $request)

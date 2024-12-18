@@ -1,51 +1,45 @@
-<form action="{{ route('voyages.store') }}" method="POST" enctype="multipart/form-data">
-    @csrf
-    <label for="titre">Titre :</label>
-    <input type="text" name="titre" id="titre" required>
+@extends('templates.app')
 
-    <label for="description">Description :</label>
-    <textarea name="description" id="description" required></textarea>
+@section('title', 'Créer un voyage')
 
-    <label for="resume">Résumé :</label>
-    <textarea name="resume" id="resume" required></textarea>
+@section('content')
+    <div class="uk-container uk-margin-large-top">
+        <h1 class="uk-heading-line"><span>Créer un nouveau voyage</span></h1>
 
-    <label for="continent">Continent :</label>
-    <select name="continent" id="continent">
-        <option value="Europe">Europe</option>
-        <option value="Asie">Asie</option>
-        <option value="Afrique">Afrique</option>
-        <option value="Amérique">Amérique</option>
-        <option value="Océanie">Océanie</option>
-    </select>
+        <form action="{{ route('voyages.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="uk-margin">
+                <label for="titre">Titre :</label>
+                <input class="uk-input" type="text" id="titre" name="titre" required>
+            </div>
 
-    <label for="visuel">Visuel :</label>
-    <input type="file" name="visuel" id="visuel" accept="image/*">
+            <div class="uk-margin">
+                <label for="description">Description :</label>
+                <textarea class="uk-textarea" id="description" name="description" required></textarea>
+            </div>
 
-    <h3>Étapes :</h3>
-    <div id="steps-container">
-        <div class="step">
-            <label for="etape_titre_0">Titre :</label>
-            <input type="text" name="etape_titre[]" required>
+            <div class="uk-margin">
+                <label for="resume">Résumé :</label>
+                <input class="uk-input" type="text" id="resume" name="resume" required>
+            </div>
 
-            <label for="etape_description_0">Description :</label>
-            <textarea name="etape_description[]" required></textarea>
+            <div class="uk-margin">
+                <label for="continent">Continent :</label>
+                <select class="uk-select" id="continent" name="continent" required>
+                    <option value="Europe">Europe</option>
+                    <option value="Asie">Asie</option>
+                    <option value="Afrique">Afrique</option>
+                    <option value="Amérique">Amérique</option>
+                    <option value="Océanie">Océanie</option>
+                </select>
+            </div>
 
-            <label for="etape_debut_0">Début :</label>
-            <input type="date" name="etape_debut[]" required>
+            <div class="uk-margin">
+                <label for="visuel">Visuel :</label>
+                <input class="uk-input" type="file" id="visuel" name="visuel">
+            </div>
 
-            <label for="etape_fin_0">Fin :</label>
-            <input type="date" name="etape_fin[]" required>
-        </div>
+            <button class="uk-button uk-button-primary" type="submit">Créer</button>
+        </form>
     </div>
-    <button type="button" onclick="addStep()">Ajouter une étape</button>
-
-    <button type="submit">Créer le voyage</button>
-</form>
-
-<script>
-    function addStep() {
-        const container = document.getElementById('steps-container');
-        const step = container.querySelector('.step').cloneNode(true);
-        container.appendChild(step);
-    }
-</script>
+@endsection
