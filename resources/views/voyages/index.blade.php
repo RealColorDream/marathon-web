@@ -1,13 +1,17 @@
 @extends('templates.app')
 
+@push('css voyage')
+    @vite('resources/css/voyage.css')
+@endpush
+
 @section('title', 'Accueil')
 
 @section('content')
     <div class="uk-container uk-margin-large-top">
         {{-- Section des voyages publics --}}
-        <h1 class="uk-heading-line"><span>Nos Voyages Publics</span></h1>
+        <h1><span>Nos Voyages Publics</span></h1>
 
-        <div class="uk-grid-small uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid>
+        <div class="grid-voyage">
             @forelse($voyagesPublics as $voyage)
                 <div>
                     <x-voyage-card :voyage="$voyage"/>
