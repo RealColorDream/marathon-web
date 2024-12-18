@@ -8,6 +8,7 @@ use App\Models\Voyage;
 use App\Repositories\EtapeRepository;
 use App\Repositories\IEtapeRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class EtapeController extends Controller
 {
@@ -41,12 +42,19 @@ class EtapeController extends Controller
             'description' => 'nullable|string',
             'debut' => 'required|date',
             'fin' => 'required|date|after_or_equal:debut',
+            'image' => 'nullable|image|max:2048', // Validation pour l'image
         ]);
 
         // Ajout de l'ID du voyage dans les données
         $data['voyage_id'] = $id;
 
-        // Appel au repository avec les données validées
+        // Gestion de l'upload de l'image
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('images/etapes', 'public');
+            $data['image'] = $path;
+        }
+
+        // Création de l'étape
         $etape = $etapeRepository->create($data);
 
         return redirect()->route('etape.index')->with('success', 'Étape créée avec succès.');

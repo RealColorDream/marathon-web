@@ -10,7 +10,15 @@ class Etape extends Model {
 
     public $timestamps = false;
 
-    protected $fillable = ['titre', 'resume', 'description', 'debut', 'fin', 'voyage_id'];
+    protected $fillable = [
+        'voyage_id',
+        'titre',
+        'resume',
+        'description',
+        'debut',
+        'fin',
+        'image',
+    ];
 
     public function voyage() {
         return $this->belongsTo(Voyage::class);

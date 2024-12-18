@@ -9,6 +9,7 @@
         <div class="uk-grid-small uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid>
             <div>
                 <div class="uk-card uk-card-default uk-card-hover uk-card-body">
+                    <img src="{{ Storage::url($etape->image) }}" alt="Image de l'étape" class="uk-width-1-1 uk-margin-small-bottom">
                     @foreach ($medias as $media)
                         <img src="{{ $media->url }}" alt="{{ $etape->titre }}"
                              class="uk-width-1-1 uk-margin-small-bottom">
