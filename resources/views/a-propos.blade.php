@@ -20,7 +20,7 @@
 
             <!-- Vidéo -->
             <div>
-                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0"
+                <iframe src="https://youtu.be/eW1f9H1HAFA" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen class="uk-width-1-1" style="height: 300px;">
                 </iframe>
