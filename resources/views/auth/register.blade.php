@@ -7,7 +7,7 @@
         <h1>S'enregistrer</h1>
         <div class="login-form">
             <div>
-                <box-icon name='user'></box-icon>
+                <i class='bx bx-user'></i>
                 <p class="connection-title">Créer mon compte</p>
             </div>
             <hr/>

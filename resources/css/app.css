@@ -51,6 +51,33 @@ footer {
     border-radius: 5px;
     box-shadow: #333333 2px 2px 2px;
 }
+nav{
+    padding-top: 40px;
+}
+
+nav a {
+    font-family: Oswald-Regular;
+    font-size: 2em;
+    color: #000000;
+    text-decoration: #000000 none;
+}
+
+.navbar-button {
+    border: #000000 solid 4px;
+    padding: 8px;
+    border-radius: 32px;
+}
+
+nav a:hover {
+    color: #000000;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    padding: 0;
+}
 
 
 
@@ -64,7 +91,7 @@ footer {
     border: solid 1px #191919;
     border-radius: 16px;
     background: rgb(255,255,255);
-    background: linear-gradient(180deg, rgba(255,255,255,1) 77%, rgba(255,230,208,1) 100%); 
+    background: linear-gradient(180deg, rgba(255,255,255,1) 77%, rgba(255,230,208,1) 100%);
 }
 .login-form>form{
     display: flex;

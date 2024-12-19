@@ -7,7 +7,7 @@
     <h1>Me connecter</h1>
     <div class="login-form">
         <div>
-            <box-icon name='user'></box-icon>
+            <i class='bx bx-user'></i>
             <p class="connection-title">Créer mon compte</p>
         </div>
         <hr/>
@@ -28,7 +28,7 @@
             <input type="submit" value="Valider" class="submitBtn"/><br/>
         </form>
         <div class="alrdLog">
-            <span>Pas de compte ?</span> 
+            <span>Pas de compte ?</span>
             <a href="{{route("register")}}">Créer un nouveau compte</a>
         </div>
     </div>
