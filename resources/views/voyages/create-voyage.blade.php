@@ -1,9 +1,11 @@
 @extends('templates.app')
-
+@push('css auth')
+    @vite(["resources/css/auth.css", "resources/css/app.css", "resources/js/app.js"])
+@endpush
 @section('title', 'Créer un Voyage')
 
 @section('content')
-    <div class="uk-container uk-margin-large-top">
+    <section class="register">
         {{-- Messages d'erreur --}}
         @if($errors->any())
             <div class="uk-alert-danger" uk-alert>
@@ -16,49 +18,50 @@
             </div>
         @endif
 
-        <h1 class="uk-heading-line"><span>Créer un Voyage</span></h1>
+        <h1>Créer un voyage</h1>
+        <div class="login-form">
+            <form action="{{ route('voyages.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
 
-        <form action="{{ route('voyages.store') }}" method="POST" enctype="multipart/form-data">
-            @csrf
+                {{-- Titre --}}
+                <div class="fields">
+                    <label for="titre">Titre :</label>
+                    <input class="uk-input" type="text" id="titre" name="titre" value="{{ old('titre') }}" required>
+                </div>
 
-            {{-- Titre --}}
-            <div class="uk-margin">
-                <label for="titre">Titre :</label>
-                <input class="uk-input" type="text" id="titre" name="titre" value="{{ old('titre') }}" required>
-            </div>
+                {{-- Description --}}
+                <div class="fields">
+                    <label for="description">Description :</label>
+                    <textarea class="uk-textarea" id="description" name="description" required>{{ old('description') }}</textarea>
+                </div>
 
-            {{-- Description --}}
-            <div class="uk-margin">
-                <label for="description">Description :</label>
-                <textarea class="uk-textarea" id="description" name="description" required>{{ old('description') }}</textarea>
-            </div>
+                {{-- Résumé --}}
+                <div class="fields">
+                    <label for="resume">Résumé :</label>
+                    <input class="uk-input" type="text" id="resume" name="resume" value="{{ old('resume') }}" required>
+                </div>
 
-            {{-- Résumé --}}
-            <div class="uk-margin">
-                <label for="resume">Résumé :</label>
-                <input class="uk-input" type="text" id="resume" name="resume" value="{{ old('resume') }}" required>
-            </div>
+                {{-- Continent --}}
+                <div class="fields">
+                    <label for="continent">Continent :</label>
+                    <select class="uk-select" id="continent" name="continent" required>
+                        <option value="Europe" {{ old('continent') == 'Europe' ? 'selected' : '' }}>Europe</option>
+                        <option value="Asie" {{ old('continent') == 'Asie' ? 'selected' : '' }}>Asie</option>
+                        <option value="Afrique" {{ old('continent') == 'Afrique' ? 'selected' : '' }}>Afrique</option>
+                        <option value="Amérique" {{ old('continent') == 'Amérique' ? 'selected' : '' }}>Amérique</option>
+                        <option value="Océanie" {{ old('continent') == 'Océanie' ? 'selected' : '' }}>Océanie</option>
+                    </select>
+                </div>
 
-            {{-- Continent --}}
-            <div class="uk-margin">
-                <label for="continent">Continent :</label>
-                <select class="uk-select" id="continent" name="continent" required>
-                    <option value="Europe" {{ old('continent') == 'Europe' ? 'selected' : '' }}>Europe</option>
-                    <option value="Asie" {{ old('continent') == 'Asie' ? 'selected' : '' }}>Asie</option>
-                    <option value="Afrique" {{ old('continent') == 'Afrique' ? 'selected' : '' }}>Afrique</option>
-                    <option value="Amérique" {{ old('continent') == 'Amérique' ? 'selected' : '' }}>Amérique</option>
-                    <option value="Océanie" {{ old('continent') == 'Océanie' ? 'selected' : '' }}>Océanie</option>
-                </select>
-            </div>
+                {{-- Visuel --}}
+                <div class="fields">
+                    <label for="visuel">Visuel :</label>
+                    <input class="uk-input" type="file" id="visuel" name="visuel">
+                </div>
 
-            {{-- Visuel --}}
-            <div class="uk-margin">
-                <label for="visuel">Visuel :</label>
-                <input class="uk-input" type="file" id="visuel" name="visuel">
-            </div>
-
-            {{-- Bouton de soumission --}}
-            <button class="uk-button uk-button-primary" type="submit">Créer le voyage</button>
-        </form>
-    </div>
+                {{-- Bouton de soumission --}}
+                <button class="uk-button uk-button-primary submitBtn" type="submit">Créer le voyage</button>
+            </form>
+        </div>
+    </section>
 @endsection
