@@ -30,7 +30,7 @@
         </div>
 
         {{-- Section des voyages publics --}}
-        <h1><span>Nos Voyages Publics</span></h1>
+        <h1>Voyages</h1>
         <div>
             <div class="grid-voyage">
                 @forelse($voyagesPublics as $voyage)

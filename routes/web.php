@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EtapeController;
 use App\Http\Controllers\VoyageController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AvisController;
 
 // Accueil
 Route::get('/', fn() => view('statiques.accueil'))->name('accueil');
@@ -40,3 +41,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/voyages/{id}/etape/create', [EtapeController::class, 'create'])->name('etapes.create');
     Route::post('/voyages/{id}/etape', [EtapeController::class, 'store'])->name('etapes.store');
 });
+
+// Pour stocker les avis
+Route::post('/voyages/{voyage}/avis', [AvisController::class, 'store'])->name('avis.store')->middleware('auth');
