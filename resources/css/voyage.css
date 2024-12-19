@@ -7,6 +7,7 @@ body {
         top 80% right 20% url('/resources/images/nuage2.svg'),
         linear-gradient(180deg, rgba(103,207,255,1) 0%, rgba(169,205,251,1) 100%);
     background-repeat: no-repeat;
+    min-height: 100vh;
 }
 
 h1 {
@@ -30,7 +31,7 @@ h2 {
 .grid-voyage {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
-    
+
     grid-gap: 20px;
     margin: 20px;
 }
