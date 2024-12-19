@@ -6,7 +6,7 @@ use App\Http\Controllers\VoyageController;
 use Illuminate\Support\Facades\Route;
 
 // Accueil
-Route::get('/', [VoyageController::class, 'index'])->name('accueil');
+Route::get('/', fn() => view('statiques.accueil') )->name('accueil');
 
 // Contact
 Route::get('/contact', fn() => view('contact'))->name("contact");
