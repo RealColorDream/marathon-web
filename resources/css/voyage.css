@@ -53,3 +53,14 @@ img {
     width: 50%;
     height: 50%;
 }
+
+img.voyage-img {
+    border-radius: 16px;
+    min-width: 20%;
+    min-height: 20%;
+    max-width: 80%;
+    max-height: 80%;
+    width: auto;
+    height: auto;
+}
+
