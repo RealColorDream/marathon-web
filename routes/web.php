@@ -44,3 +44,6 @@ Route::middleware('auth')->group(function () {
 
 // Pour stocker les avis
 Route::post('/voyages/{voyage}/avis', [AvisController::class, 'store'])->name('avis.store')->middleware('auth');
+
+// À propos
+Route::get('/a-propos', fn() => view('a-propos'))->name('a-propos');
