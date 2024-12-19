@@ -47,17 +47,78 @@
         <h2 class="uk-heading-line"><span>Avis et Likes</span></h2>
         <p><strong>Nombre de likes :</strong> {{ $voyage->likes->count() }}</p>
 
-        @if($voyage->avis->count())
-            <ul class="uk-list uk-list-divider">
+        <ul id="comments-list" class="uk-list uk-list-divider">
+            @if($voyage->avis->count())
                 @foreach($voyage->avis as $avis)
-                    <li>
-                        <p><strong>{{ $avis->user->name }}</strong> : {{ $avis->commentaire }}</p>
-                        <p><small>Posté le {{ $avis->created_at }}</small></p>
+                    <li id="avis-{{ $avis->id }}">
+                        <p><strong>{{ $avis->user->name }}</strong> : {{ $avis->contenu }}</p>
+                        <p><small>Posté le {{ $avis->created_at->format('d/m/Y à H:i') }}</small></p>
                     </li>
                 @endforeach
-            </ul>
+            @else
+                <li id="no-comments">Aucun avis pour ce voyage.</li>
+            @endif
+        </ul>
+
+        <!-- Formulaire pour ajouter un commentaire -->
+        @auth
+            <h3 class="uk-heading-line"><span>Ajouter un avis</span></h3>
+            <form id="comment-form" class="uk-form-stacked uk-margin-top">
+                @csrf
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="contenu">Votre commentaire :</label>
+                    <div class="uk-form-controls">
+                        <textarea class="uk-textarea" id="contenu" name="contenu" rows="5" placeholder="Écrivez votre avis ici..." required></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="uk-button uk-button-primary">Publier</button>
+            </form>
         @else
-            <p>Aucun avis pour ce voyage.</p>
-        @endif
+            <p><a href="{{ route('login') }}" class="uk-link-text">Connectez-vous</a> pour laisser un commentaire.</p>
+        @endauth
     </div>
+
+    <script>
+        document.getElementById('comment-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Empêche le rechargement de la page
+
+            const contenu = document.getElementById('contenu').value;
+            const token = document.querySelector('input[name="_token"]').value;
+
+            fetch("{{ route('avis.store', $voyage->id) }}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': token,
+                },
+                body: JSON.stringify({ contenu: contenu }),
+            })
+                .then(response => {
+                    if (response.ok) return response.json();
+                    throw new Error('Erreur lors de la soumission du commentaire.');
+                })
+                .then(data => {
+                    const commentList = document.getElementById('comments-list');
+                    const noComments = document.getElementById('no-comments');
+
+                    // Supprime le message "Aucun avis pour ce voyage" s'il est affiché
+                    if (noComments) {
+                        noComments.remove();
+                    }
+
+                    // Ajouter dynamiquement le commentaire au DOM
+                    const newComment = `
+                    <li id="avis-${data.id}">
+                        <p><strong>${data.user_name}</strong> : ${data.contenu}</p>
+                        <p><small>Posté le ${data.created_at}</small></p>
+                    </li>
+                `;
+                    commentList.innerHTML += newComment;
+
+                    // Réinitialiser le formulaire
+                    document.getElementById('contenu').value = '';
+                })
+                .catch(error => console.error(error));
+        });
+    </script>
 @endsection
