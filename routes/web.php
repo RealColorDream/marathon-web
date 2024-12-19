@@ -3,11 +3,12 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EtapeController;
 use App\Http\Controllers\VoyageController;
+use App\Models\Voyage;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AvisController;
 
 // Accueil
-Route::get('/', fn() => view('statiques.accueil'))->name('accueil');
+Route::get('/',  [\App\Repositories\VoyageRepository::class, 'accueil'])->name('accueil');
 
 // Contact
 Route::get('/contact', fn() => view('contact'))->name("contact");
