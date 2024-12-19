@@ -2,17 +2,17 @@
 
 @section('title', $voyage->titre)
 
+@push('css voyage')
+    @vite('resources/css/voyage.css')
+@endpush
+
 @section('content')
     <div class="uk-container uk-margin-large-top">
         <h1 class="uk-heading-line"><span>{{ $voyage->titre }}</span></h1>
 
-        @if($voyage->visuel)
-            <img src="{{ asset('storage/' . $voyage->visuel) }}" alt="{{ $voyage->titre }}" class="uk-width-1-1 uk-margin-bottom">
-        @endif
 
-        <p>{{ $voyage->description }}</p>
-        <p><strong>Résumé :</strong> {{ $voyage->resume }}</p>
-        <p><strong>Continent :</strong> {{ $voyage->continent }}</p>
+        <p class="voyage-resume"><strong>Résumé :</strong> {{ $voyage->resume }}</p>
+        <p class="voyage-description">{{ $voyage->description }}</p>
 
         @if(Auth::id() === $voyage->user_id && !$voyage->en_ligne)
             <form action="{{ route('voyages.activate', $voyage->id) }}" method="POST">
@@ -22,26 +22,28 @@
         @endif
 
         @if($voyage->etapes->count())
-            <h2 class="uk-heading-line"><span>Étapes</span></h2>
-            <ul class="uk-list uk-list-divider">
+                <div id="voyage-etapes-box">
+                    <ul class="etapes-list">
                 @foreach($voyage->etapes as $etape)
                     <li>
-                        <strong>{{ $etape->titre }}</strong> ({{ $etape->debut }} - {{ $etape->fin }})
-                        <p>{{ $etape->description }}</p>
+                        <strong><a href ="{{route("etapes.show", ['id' => $etape->id])}}">{{ $etape->titre }}</a></strong>
                     </li>
                 @endforeach
-            </ul>
+                    </ul>
+                </div>
 
             <!-- Bouton pour démarrer le voyage -->
-            <a href="{{ route('etapes.show', $voyage->etapes->first()->id) }}" class="uk-button uk-button-primary uk-margin-top">
-                Démarrer le voyage
-            </a>
         @endif
 
         @if(Auth::id() === $voyage->user_id)
             <a href="{{ route('etapes.create', $voyage->id) }}" class="uk-button uk-button-secondary uk-margin-top">
                 Ajouter une étape
             </a>
+        @endif
+
+        @if($voyage->visuel)
+            <br/>
+            <img src="{{ asset('storage/' . $voyage->visuel) }}" alt="{{ $voyage->titre }}" class="uk-width-1-1 uk-margin-bottom">
         @endif
 
         <h2 class="uk-heading-line"><span>Avis et Likes</span></h2>
