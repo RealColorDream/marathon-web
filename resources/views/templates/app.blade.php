@@ -28,6 +28,7 @@
     @yield("content")
 </main>
 
-
+<x-footer/>
+@stack('css voyage')
 </body>
 </html>

@@ -29,11 +29,11 @@ Route::get('/voyages', [VoyageController::class, 'index'])->name('voyages.index'
 Route::get('/voyages/{id}', [VoyageController::class, 'show'])->name('voyages.show');
 Route::patch('/voyages/{id}/activate', [VoyageController::class, 'activate'])->name('voyages.activate');
 
-Route::get('/etape', [EtapeController::class, 'index'])->name('etape.index');
-Route::get('/etape/{id}', [EtapeController::class, 'show'])->name('etape.show');
-Route::get('/etape/{id}/edit', [EtapeController::class, 'edit'])->name('etape.edit');
-Route::put('/etape/{id}', [EtapeController::class, 'update'])->name('etape.update');
-Route::delete('/etape/{id}', [EtapeController::class, 'destroy'])->name('etape.destroy');
+Route::get('/etape', [EtapeController::class, 'index'])->name('etapes.index');
+Route::get('/etape/{id}', [EtapeController::class, 'show'])->name('etapes.show');
+Route::get('/etape/{id}/edit', [EtapeController::class, 'edit'])->name('etapes.edit');
+Route::put('/etape/{id}', [EtapeController::class, 'update'])->name('etapes.update');
+Route::delete('/etape/{id}', [EtapeController::class, 'destroy'])->name('etapes.destroy');
 
 Route::get('/voyages/{id}/etape/create', [EtapeController::class, 'create'])->name('etapes.create');
 Route::post('/voyages/{id}/etape', [EtapeController::class, 'store'])->name('etapes.store');

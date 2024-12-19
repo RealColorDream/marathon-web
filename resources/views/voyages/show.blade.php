@@ -7,7 +7,7 @@
         <h1 class="uk-heading-line"><span>{{ $voyage->titre }}</span></h1>
 
         @if($voyage->visuel)
-            <img src="{{ $voyage->visuel }}" alt="{{ $voyage->titre }}" class="uk-width-1-1 uk-margin-bottom">
+            <img src="{{ asset('storage/' . $voyage->visuel) }}" alt="{{ $voyage->titre }}" class="uk-width-1-1 uk-margin-bottom">
         @endif
 
         <p>{{ $voyage->description }}</p>
@@ -31,6 +31,11 @@
                     </li>
                 @endforeach
             </ul>
+
+            <!-- Bouton pour démarrer le voyage -->
+            <a href="{{ route('etapes.show', $voyage->etapes->first()->id) }}" class="uk-button uk-button-primary uk-margin-top">
+                Démarrer le voyage
+            </a>
         @endif
 
         @if(Auth::id() === $voyage->user_id)
