@@ -38,12 +38,19 @@ class EtapeController extends Controller
     {
         $data = $request->validate([
             'titre' => 'required|string|max:255',
-            'resume' => 'required|string',
+            'resume' => 'required|string|max:500',
             'description' => 'nullable|string',
             'debut' => 'required|date',
-            'fin' => 'required|date|after_or_equal:debut',
-            'image' => 'nullable|image|max:2048', // Validation pour l'image
+            'fin' => 'required|date|after:debut', // Validation stricte pour que "fin" soit après "debut"
+            'image' => 'nullable|image|max:2048',
         ]);
+
+        // Validation supplémentaire pour des cas spécifiques
+        if (strtotime($data['debut']) >= strtotime($data['fin'])) {
+            return back()
+                ->withErrors(['debut' => 'La date de début doit être antérieure à la date de fin.'])
+                ->withInput();
+        }
 
         // Ajout de l'ID du voyage dans les données
         $data['voyage_id'] = $id;
