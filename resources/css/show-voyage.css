@@ -1,0 +1,55 @@
+body {
+    /*    background: rgb(103,207,255);*/
+    background: /*linear-gradient(180deg, rgba(103,207,255,1) 0%, rgba(169,205,251,1) 100%)*/
+        bottom 0 right 0  url('/resources/images/montagne2.svg'),
+        bottom 0 left 0 url('/resources/images/montagne1.svg'),
+        top 40% left 15% / 30% url('/resources/images/nuage1.svg'),
+        top 80% right 20% url('/resources/images/nuage2.svg'),
+        linear-gradient(180deg, rgba(103,207,255,1) 0%, rgba(169,205,251,1) 100%);
+    background-repeat: no-repeat;
+}
+
+h1{
+    font-size: 72px;
+    color: #FF8D29;
+    font-family: 'Newwake';
+}
+
+h2 {
+    font-size: 2rem;
+    color: #FF8D29;
+    font-family: 'Newwake';
+}
+
+.uk-card {
+    border: 0.25rem solid #FF8D29;
+    border-color: #FF8D29;
+    border-radius: 1rem;
+}
+
+
+.grid-voyage {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+
+    grid-gap: 20px;
+    margin: 20px;
+}
+.grid-voyage>div>div{
+    max-width: 500px;
+    max-height: 500px;
+}
+/*
+image {
+    max-width: 50%;
+    width: 30%;
+    height: 30%;
+}
+*/
+
+img {
+    border-radius: 1rem;
+    max-width: 50%;
+    width: 50%;
+    height: 50%;
+}
