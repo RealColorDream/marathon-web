@@ -16,6 +16,8 @@
     @show
     @stack('css auth')
     @stack("css profile")
+    @stack("css voyage")
+    {{--@stack("css")--}}
 </head>
 <body>
 
