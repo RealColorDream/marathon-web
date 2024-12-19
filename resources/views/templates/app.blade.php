@@ -15,6 +15,9 @@
         @vite(["resources/css/normalize.css", "resources/css/app.css", "resources/js/app.js"])
     @show
     @stack('css auth')
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @stack("css profile")
     @stack("css voyage")
     @stack('css 404')
@@ -24,12 +27,12 @@
 
 <x-navbar/>
 
-
 <main>
     @yield("content")
 </main>
 
 <x-footer/>
 @stack('css voyage')
+@stack('scripts')
 </body>
 </html>
