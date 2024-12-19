@@ -10,7 +10,7 @@
     <div class="uk-container uk-margin-large-top">
         {{-- Message de succès/erreurs --}}
         @if(session('success'))
-            <div>
+            <div class="uk-alert-success" uk-alert>
                 <a class="uk-alert-close" uk-close></a>
                 <p>{{ session('success') }}</p>
             </div>
@@ -29,6 +29,15 @@
                 @forelse($voyagesPublics as $voyage)
                     <div>
                         <x-voyage-card :voyage="$voyage"/>
+
+                        {{-- Bouton de like --}}
+                        <div class="like-toggle">
+                            <button class="like-button {{ $voyage->likedByUser() ? 'liked' : '' }}"
+                                    data-voyage-id="{{ $voyage->id }}">
+                                ❤️
+                            </button>
+                            <span class="like-count">{{ $voyage->likes->count() }}</span>
+                        </div>
                     </div>
                 @empty
                     <p>Aucun voyage public disponible pour le moment.</p>
@@ -47,6 +56,15 @@
                         <div>
                             <x-voyage-card :voyage="$voyage"/>
 
+                            {{-- Bouton de like --}}
+                            <div class="like-toggle">
+                                <button class="like-button {{ $voyage->likedByUser() ? 'liked' : '' }}"
+                                        data-voyage-id="{{ $voyage->id }}">
+                                    ❤️
+                                </button>
+                                <span class="like-count">{{ $voyage->likes->count() }}</span>
+                            </div>
+
                             {{-- Formulaire d'activation --}}
                             <form action="{{ route('voyages.activate', $voyage->id) }}" method="POST"
                                   class="uk-margin-top">
@@ -63,4 +81,40 @@
                 </div>
             @endif
         </div>
+    </div>
 @endsection
+
+@push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const likeButtons = document.querySelectorAll('.like-button');
+
+            likeButtons.forEach(button => {
+                button.addEventListener('click', async (e) => {
+                    const voyageId = button.getAttribute('data-voyage-id');
+
+                    try {
+                        const response = await fetch(`/voyages/${voyageId}/like`, {
+                            method: 'POST',
+                            headers: {
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                                'Content-Type': 'application/json',
+                            },
+                        });
+
+                        if (response.ok) {
+                            const data = await response.json();
+
+                            // Mise à jour du bouton et du compteur
+                            button.classList.toggle('liked', data.liked);
+                            const likeCount = button.nextElementSibling;
+                            likeCount.textContent = data.likes_count;
+                        }
+                    } catch (error) {
+                        console.error('Erreur lors du traitement du like :', error);
+                    }
+                });
+            });
+        });
+    </script>
+@endpush

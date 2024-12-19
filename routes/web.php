@@ -37,3 +37,6 @@ Route::delete('/etape/{id}', [EtapeController::class, 'destroy'])->name('etapes.
 
 Route::get('/voyages/{id}/etape/create', [EtapeController::class, 'create'])->name('etapes.create');
 Route::post('/voyages/{id}/etape', [EtapeController::class, 'store'])->name('etapes.store');
+
+// Pour liker les voyages
+Route::post('/voyages/{voyage}/like', [VoyageController::class, 'toggleLike'])->name('voyages.toggleLike');

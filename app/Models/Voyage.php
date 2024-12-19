@@ -80,4 +80,13 @@ class Voyage extends Model
     {
         return !$this->en_ligne;
     }
+
+    public function likedByUser(): bool
+    {
+        if (auth()->check()) {
+            return $this->likes()->where('user_id', auth()->id())->exists();
+        }
+
+        return false;
+    }
 }
