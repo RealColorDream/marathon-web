@@ -1,0 +1,24 @@
+:root {
+    --bg-width: 6682px;
+    --bg-height: 1079px;
+}
+
+body {
+    height: 100vh;
+    background: url('/resources/images/biomes.png') repeat-x 0 0;
+    background-size: cover;
+    background-position: center;
+    -webkit-animation: bg-scrolling 10s infinite; /* Safari 4+ */
+    -moz-animation:    bg-scrolling infinite; /* Fx 5+ */
+    -o-animation:      bg-scrolling infinite; /* Opera 12+ */
+    animation:         bg-scrolling 10s infinite; /* IE 10+ */
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function:    linear;
+    -o-animation-timing-function:      linear;
+    animation-timing-function:         linear;
+}
+
+/* Animations */
+@keyframes bg-scrolling {
+    0% { background-position: var(--bg-width)  0; }
+}
