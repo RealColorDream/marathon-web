@@ -21,6 +21,7 @@
     @stack("css profile")
     @stack("css voyage")
     @stack('css 404')
+    @stack('css apropos')
     {{--@stack("css")--}}
 </head>
 <body>
