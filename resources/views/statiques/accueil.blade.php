@@ -6,7 +6,7 @@
 
 
 @section('title', 'Accueil')
-<div class="scrolling-bg"><div class="scrolling-bg-image scrolling-bg-image1"></div><div class="scrolling-bg-image scrolling-bg-image2"></div></div>
+<div class="scrolling-bg"></div>
 
 @section('content')
     <div class="uk-container uk-margin-large-top truc">
@@ -28,6 +28,9 @@
         </div>
 
         <div class="search-container-space"></div>
+    </div>
+
+    <div class="road">
     </div>
 @endsection
 
