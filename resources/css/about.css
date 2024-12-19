@@ -1,10 +1,32 @@
 body {
     background:
-    bottom 0 right 0  url('/resources/images/montagne3.svg'),
-    bottom top 20% left 50% url('/resources/images/nuage6.svg'),
-    top 60% left 0 url('/resources/images/nuage7.svg'),
-    top 80% right 0 url('/resources/images/nuage8.svg'),
+    bottom 0 right 0 /100%  url('/resources/images/montagne3.svg'),
+    top 35% left 50% url('/resources/images/nuage6.svg'),
+    top 70% left 0 url('/resources/images/nuage7.svg'),
+    top 90% right 0 url('/resources/images/nuage8.svg'),
     linear-gradient(180deg, rgba(103,207,255,1) 0%, rgba(169,205,251,1) 100%);
     background-repeat: no-repeat;
-    min-height: 100vh;
+    min-height: 200vh;
+}
+
+#about h1{
+    color: #FF8D29;
+    font-size: 72px;
+    font-family: 'Newwake';
+}
+
+
+#about>div{
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+#about>div>div{
+    margin: 3rem 0;
+}
+
+#about p{
+    font-family: "Oswald-Extra-Light";
+    color: black;
+    font-size: 24px;
 }
