@@ -79,7 +79,12 @@ nav ul {
     padding: 0;
 }
 
-
+img {
+    border-radius: 1rem;
+    max-width: 50%;
+    width: 50%;
+    height: 50%;
+}
 
 /* fomulaires de login et register*/
 /* .login-form>form>div{
