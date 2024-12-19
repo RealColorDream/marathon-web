@@ -70,8 +70,6 @@
             @endif
         </div>
     </div>
-
-    @include('a-propos')
 @endsection
 
 @push('scripts')
