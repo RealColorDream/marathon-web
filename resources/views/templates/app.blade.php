@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>{{ $title ?? "Page en cours" }}</title>
@@ -15,6 +15,9 @@
         @vite(["resources/css/normalize.css", "resources/css/app.css", "resources/js/app.js"])
     @show
     @stack('css auth')
+    @stack("css profile")
+    @stack("css voyage")
+    {{--@stack("css")--}}
 </head>
 <body>
 

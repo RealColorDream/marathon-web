@@ -102,7 +102,9 @@ body {
     top 80% right 20% url('/resources/images/nuage2.svg'),
     linear-gradient(180deg, rgba(103,207,255,1) 0%, rgba(169,205,251,1) 100%);
     background-repeat: no-repeat;
+    min-height: 100vh;
 }
+
 
 #nuage1{
     position: absolute;
