@@ -1,7 +1,7 @@
 @extends("templates.app")
 
 @push('css profile')
-    @vite(["resources/css/profil.css", "resources/css/app.css", "resources/js/app.js", "/ressources/images/van.svg"])
+    @vite(["resources/css/profil.css", "resources/css/app.css", "resources/js/app.js"])
 @endpush
 <title>Profil de {{ $user->name ?? "inconnu" }}</title>
 
