@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EtapeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\VoyageController;
 use App\Models\Voyage;
 use Illuminate\Support\Facades\Route;
@@ -48,3 +49,6 @@ Route::post('/voyages/{voyage}/avis', [AvisController::class, 'store'])->name('a
 
 // À propos
 Route::get('/a-propos', fn() => view('a-propos'))->name('a-propos');
+
+// Photo de profile
+Route::put('/profile/avatar', [UserController::class, 'updateAvatar'])->name('profile.update-avatar');
