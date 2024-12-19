@@ -1,6 +1,6 @@
 :root {
-    --bg-width: 619.277108434vh;
-    --bg-height: 100vh;
+    --bg-width: 557.34939756vh; /* multiply 6.192771084 by the height value, example: 6.192771084 * 90 for 90% of the vh */
+    --bg-height: 90vh;
 }
 
 body {
