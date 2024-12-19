@@ -72,23 +72,23 @@
     transform: translateY(-50%);
     z-index: 99999;
     left: 0;
-    bottom: 16%;
-
+    bottom: 10px;
+    width: 35%;
     animation: van-life 3.8s linear infinite;
   }
 
   /* Animation pour rouler et traverser l'écran */
   @keyframes van-life {
     0% {
-      transform: translate(-100%, -50%);
+      transform: translateX(-100%);
     }
     100% {
-      transform: translate(100vw, -50%);
+      transform: translateX(100vw);
     }
   }
 body {
     background:
-    bottom 0 right 50% /100% url('/resources/images/route3.svg'),
+    bottom 0 right 50% /100%url('/resources/images/route3.svg'),
     top 20% left 0 url('/resources/images/nuage3.svg'),
     top 40% right 0 url('/resources/images/nuage4.svg'),
     top 60% left 0 url('/resources/images/nuage5.svg'),
@@ -96,10 +96,13 @@ body {
     background-repeat: no-repeat;
     overflow: hidden;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
     }
 
 main{
     height: 100%;
+    flex-grow: 1;
 }
 
 .profile{
