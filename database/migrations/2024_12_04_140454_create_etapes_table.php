@@ -19,9 +19,11 @@ return new class extends Migration
             $table->text('description');
             $table->date("debut");
             $table->date("fin");
+            $table->string('image')->nullable(); // Nouveau champ pour les images
             $table->foreignIdFor(Voyage::class)->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->timestamps(); // Ajout des timestamps pour created_at et updated_at
         });
     }
 
