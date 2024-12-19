@@ -29,15 +29,6 @@
                 @forelse($voyagesPublics as $voyage)
                     <div>
                         <x-voyage-card :voyage="$voyage"/>
-
-                        {{-- Bouton de like --}}
-                        <div class="like-toggle">
-                            <button class="like-button {{ $voyage->likedByUser() ? 'liked' : '' }}"
-                                    data-voyage-id="{{ $voyage->id }}">
-                                ❤️
-                            </button>
-                            <span class="like-count">{{ $voyage->likes->count() }}</span>
-                        </div>
                     </div>
                 @empty
                     <p>Aucun voyage public disponible pour le moment.</p>
@@ -55,16 +46,6 @@
                     @forelse($voyagesPrives as $voyage)
                         <div>
                             <x-voyage-card :voyage="$voyage"/>
-
-                            {{-- Bouton de like --}}
-                            <div class="like-toggle">
-                                <button class="like-button {{ $voyage->likedByUser() ? 'liked' : '' }}"
-                                        data-voyage-id="{{ $voyage->id }}">
-                                    ❤️
-                                </button>
-                                <span class="like-count">{{ $voyage->likes->count() }}</span>
-                            </div>
-
                             {{-- Formulaire d'activation --}}
                             <form action="{{ route('voyages.activate', $voyage->id) }}" method="POST"
                                   class="uk-margin-top">
@@ -87,31 +68,45 @@
 @push('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const likeButtons = document.querySelectorAll('.like-button');
-
-            likeButtons.forEach(button => {
-                button.addEventListener('click', async (e) => {
+            console.log('DOM fully loaded and parsed');
+            document.querySelectorAll('.like-button').forEach(button => {
+                button.addEventListener('click', async (event) => {
+                    const button = event.currentTarget;
                     const voyageId = button.getAttribute('data-voyage-id');
+                    console.log('Button clicked for voyage ID:', voyageId);
 
                     try {
                         const response = await fetch(`/voyages/${voyageId}/like`, {
                             method: 'POST',
                             headers: {
-                                'X-CSRF-TOKEN': '{{ csrf_token() }}',
                                 'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
                             },
                         });
 
-                        if (response.ok) {
-                            const data = await response.json();
+                        console.log('Response status:', response.status);
 
-                            // Mise à jour du bouton et du compteur
-                            button.classList.toggle('liked', data.liked);
-                            const likeCount = button.nextElementSibling;
-                            likeCount.textContent = data.likes_count;
+                        if (response.ok) {
+                            const contentType = response.headers.get('Content-Type');
+                            if (contentType && contentType.includes('application/json')) {
+                                const data = await response.json();
+                                console.log('Response data:', data);
+
+                                // Update the like count
+                                const likeCountElement = button.nextElementSibling;
+                                likeCountElement.textContent = data.likes_count;
+
+                                // Update the button state (emoji and class)
+                                button.textContent = data.is_liked ? '❤' : '🖤️';
+                                button.classList.toggle('liked', data.is_liked);
+                            } else {
+                                console.error('Unexpected content type:', contentType);
+                            }
+                        } else {
+                            console.error('Error processing the request', response);
                         }
                     } catch (error) {
-                        console.error('Erreur lors du traitement du like :', error);
+                        console.error('Network or JavaScript error', error);
                     }
                 });
             });

@@ -102,19 +102,20 @@ class VoyageController extends Controller
         return view('voyages.continent', compact('voyages', 'continent', 'continents'));
     }
 
-    public function toggleLike(Voyage $voyage)
+    public function toggleLike(Request $request, Voyage $voyage)
     {
-        $user = Auth::user();
+        $user = $request->user();
 
-        // Vérifie si l'utilisateur a déjà liké ce voyage
         if ($voyage->isLikedBy($user)) {
-            $voyage->likes()->detach($user->id); // Retire le like
+            $voyage->likes()->detach($user->id);
+            $isLiked = false;
         } else {
-            $voyage->likes()->attach($user->id); // Ajoute un like
+            $voyage->likes()->attach($user->id);
+            $isLiked = true;
         }
 
         return response()->json([
-            'liked' => $voyage->isLikedBy($user),
+            'is_liked' => $isLiked,
             'likes_count' => $voyage->likes()->count(),
         ]);
     }

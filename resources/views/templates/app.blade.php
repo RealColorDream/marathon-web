@@ -15,11 +15,13 @@
         @vite(["resources/css/normalize.css", "resources/css/app.css", "resources/js/app.js"])
     @show
     @stack('css auth')
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
 
 <x-navbar/>
-
 
 <main>
     @yield("content")
@@ -29,5 +31,6 @@
     <p>IUT de Lens</p>
 </footer>
 @stack('css voyage')
+@stack('scripts')
 </body>
 </html>
