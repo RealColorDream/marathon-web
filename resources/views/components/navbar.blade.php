@@ -1,7 +1,7 @@
 <nav {{ $attributes }}>
     <ul>
 
-        <li><a href="{{ route('accueil') }}"><img src="{{ Vite::asset('resources/images/logo.svg') }}" alt="logo"></a></li>
+        <li><a href="{{ route('accueil') }}"><img id="logo" src="{{ Vite::asset('resources/images/logo.svg') }}" alt="logo"></a></li>
         <li><a href="{{ route('voyages.index') }}">Voyages</a></li>
         <!--<form action="{{ route('voyages.index') }}" method="GET" class="uk-search uk-search-default">
             <div class="uk-search-icon-flip" uk-search-icon>
