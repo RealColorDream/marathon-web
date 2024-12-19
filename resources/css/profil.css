@@ -4,12 +4,14 @@
     display: flex;
     justify-content: space-between;
     margin: 0 10%;
+    padding-top: 0; /* Reduce padding to move the profile section higher */
 }
 
 .user-profile {
     display: flex;
     align-items: center;
     gap: 20px;
+    margin-top: -60px; /* Increase negative margin to move it higher */
 }
 
 .user-avatar {
@@ -28,10 +30,13 @@
     color: black;
     font-size: 115%;
 }
+
 .voyage-likes {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center; /* Center the voyage boxes */
     margin: 0 10%;
+    gap: 50px; /* Increase the spacing between voyage boxes */
 }
 
 .voyage-box {
@@ -42,14 +47,15 @@
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 25%;
+    width: 200px; /* Make the boxes smaller */
+    height: 200px; /* Make the boxes smaller */
     padding: 15px;
 }
 
 .voyage-box img {
     width: 100%;
-    height: 150px;
-    object-fit: cover;
+    height: 100%;
+    object-fit: contain; /* Ensure the entire image fits within the container */
     border-radius: 8px;
 }
 
@@ -67,15 +73,16 @@
     font-size: 12px;
     color: #888;
 }
+
 .van {
     position: absolute;
     transform: translateY(-50%);
-    z-index: 99999;
+    z-index: 3;
     left: 0;
     bottom: 10px;
-    width: 35%;
+    width: 20%; /* Reduce the width to make the van smaller */
     animation: van-life 3.8s linear infinite;
-  }
+}
 
   /* Animation pour rouler et traverser l'écran */
   @keyframes van-life {
@@ -86,6 +93,7 @@
       transform: translateX(100vw);
     }
   }
+
 body {
     background:
     bottom 0 right 50% /100%url('/resources/images/route3.svg'),
@@ -129,4 +137,13 @@ main{
     font-size: 56px;
     font-family: 'Oswald-Regular';
     color: black;
+}
+
+.voyage-box h3.voyage-title {
+    color: orange;
+    margin-bottom: 10px;
+    font-size: 18px;
+    text-align: center;
+    font-family: 'Newwake', sans-serif;
+    font-weight: bold; /* Make the title font bold */
 }
