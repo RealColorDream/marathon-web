@@ -12,14 +12,24 @@
 
     {{-- Bouton de like --}}
     <div class="like-toggle">
-        <button class="like-button {{ $voyage->isLikedBy(Auth::user()) ? 'liked' : '' }}"
-                data-voyage-id="{{ $voyage->id }}">
-            @if($voyage->isLikedBy(Auth::user()))
-                <img src="{{ Vite::asset('resources/images/Heart plein.svg') }}" alt="Liked">
-            @else
+        @if(Auth::check())
+            <button class="like-button {{ $voyage->isLikedBy(Auth::user()) ? 'liked' : '' }}"
+                    data-voyage-id="{{ $voyage->id }}">
+                @if($voyage->isLikedBy(Auth::user()))
+                    <img src="{{ Vite::asset('resources/images/Heart plein.svg') }}" alt="Liked">
+                @else
+                    <img src="{{ Vite::asset('resources/images/Heart.svg') }}" alt="Not Liked">
+                @endif
+            </button>
+        @else
+            {{-- Afficher un message ou désactiver le bouton si l'utilisateur n'est pas connecté --}}
+            <button class="like-button" disabled>
                 <img src="{{ Vite::asset('resources/images/Heart.svg') }}" alt="Not Liked">
-            @endif
-        </button>
+            </button>
+        @endif
         <span class="like-count">{{ $voyage->likes->count() }}</span>
+        @if(!Auth::check())
+            <span class="uk-text-muted">Connectez-vous pour aimer ce voyage.</span>
+        @endif
     </div>
 </div>
