@@ -8,10 +8,10 @@ body {
     background: url('/resources/images/biomes.png') repeat-x 0 0;
     background-size: cover;
     background-position: center;
-    -webkit-animation: bg-scrolling 10s infinite; /* Safari 4+ */
+    -webkit-animation: bg-scrolling 25s infinite; /* Safari 4+ */
     -moz-animation:    bg-scrolling infinite; /* Fx 5+ */
     -o-animation:      bg-scrolling infinite; /* Opera 12+ */
-    animation:         bg-scrolling 10s infinite; /* IE 10+ */
+    animation:         bg-scrolling 25s infinite; /* IE 10+ */
     -webkit-animation-timing-function: linear;
     -moz-animation-timing-function:    linear;
     -o-animation-timing-function:      linear;
