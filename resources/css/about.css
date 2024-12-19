@@ -1,0 +1,10 @@
+body {
+    background:
+    bottom 0 right 0  url('/resources/images/montagne3.svg'),
+    bottom top 20% left 50% url('/resources/images/nuage6.svg'),
+    top 60% left 0 url('/resources/images/nuage7.svg'),
+    top 80% right 0 url('/resources/images/nuage8.svg'),
+    linear-gradient(180deg, rgba(103,207,255,1) 0%, rgba(169,205,251,1) 100%);
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}

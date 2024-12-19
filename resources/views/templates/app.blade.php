@@ -7,9 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 {{--    @vite('resources/css/accueil.css')--}}
     <!-- UIKit CSS -->
-
-
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/css/uikit.min.css"/>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -27,6 +24,7 @@
     @stack("css voyage")
     @stack('css 404')
     @stack('css show-etape')
+    @stack('css about')
     {{--@stack("css")--}}
 </head>
 <body>
