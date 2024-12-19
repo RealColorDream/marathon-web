@@ -14,13 +14,6 @@
         <p><strong>Résumé :</strong> {{ $voyage->resume }}</p>
         <p><strong>Continent :</strong> {{ $voyage->continent }}</p>
 
-        @if(Auth::id() === $voyage->user_id && !$voyage->en_ligne)
-            <form action="{{ route('voyages.activate', $voyage->id) }}" method="POST">
-                @csrf
-                <button type="submit" class="uk-button uk-button-primary">Activer ce voyage</button>
-            </form>
-        @endif
-
         @if($voyage->etapes->count())
             <h2 class="uk-heading-line"><span>Étapes</span></h2>
             <ul class="uk-list uk-list-divider">
