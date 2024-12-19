@@ -42,4 +42,11 @@ class VoyageRepository implements IVoyageRepository
     {
         Voyage::destroy($id);
     }
+
+    public function accueil()
+    {
+        $voyages = Voyage::where('en_ligne', true)->limit(3)->get();
+        return view('statiques.accueil', compact('voyages'));
+
+    }
 }
