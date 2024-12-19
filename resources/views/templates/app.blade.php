@@ -25,9 +25,7 @@
     @yield("content")
 </main>
 
-<footer>
-    <p>IUT de Lens</p>
-</footer>
+<x-footer/>
 @stack('css voyage')
 </body>
 </html>
