@@ -9,7 +9,7 @@ body {
     background-repeat: no-repeat;
 }
 
-h1{
+h1 {
     font-size: 72px;
     color: #FF8D29;
     font-family: 'Newwake';
@@ -23,7 +23,6 @@ h2 {
 
 .uk-card {
     border: 0.25rem solid #FF8D29;
-    border-color: #FF8D29;
     border-radius: 1rem;
 }
 
@@ -39,13 +38,6 @@ h2 {
     max-width: 500px;
     max-height: 500px;
 }
-/*
-image {
-    max-width: 50%;
-    width: 30%;
-    height: 30%;
-}
-*/
 
 img {
     border-radius: 1rem;
