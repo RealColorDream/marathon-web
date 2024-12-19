@@ -8,7 +8,7 @@
 {{--    @vite('resources/css/accueil.css')--}}
     <!-- UIKit CSS -->
 
-
+    <link rel="icon" href="{{ Vite::asset('resources/images/logo-s.png') }}">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/css/uikit.min.css"/>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
