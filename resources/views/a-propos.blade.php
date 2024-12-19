@@ -1,12 +1,4 @@
-@extends("templates.app")
-@push('css apropos')
-    @vite(["resources/css/apropos.css", "resources/css/app.css", "resources/js/app.js"])
-@endpush
-
-@section('title', 'A propos')
-
-@section('content')
-<div id="about" class="container">
+<section id="about" class="uk-container uk-margin-large-top uk-margin-large-bottom">
     <h2 class="uk-heading-line uk-text-center"><span>À propos</span></h2>
     <div class="uk-grid uk-grid-match uk-child-width-1-2@m uk-flex-middle" uk-grid>
         <!-- Texte -->
@@ -28,5 +20,4 @@
             </iframe>
         </div>
     </div>
-</div>
-@endsection
+</section>
