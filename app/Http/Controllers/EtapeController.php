@@ -64,7 +64,7 @@ class EtapeController extends Controller
         // Création de l'étape
         $etape = $etapeRepository->create($data);
 
-        return redirect()->route('etapes.index')->with('success', 'Étape créée avec succès.');
+        return redirect()->route('voyages.index')->with('success', 'Étape créée avec succès.');
     }
 
     /**
