@@ -80,9 +80,8 @@
     font-size: 32px;
 }
 
-.register box-icon{
-    min-width: 88px;
-    min-height: 88px;
+.register i{
+    font-size: 88px;
 }
 
 .remember{
