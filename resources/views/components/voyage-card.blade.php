@@ -14,7 +14,11 @@
     <div class="like-toggle">
         <button class="like-button {{ $voyage->isLikedBy(Auth::user()) ? 'liked' : '' }}"
                 data-voyage-id="{{ $voyage->id }}">
-            {{ $voyage->isLikedBy(Auth::user()) ? '❤' : '️🖤' }}
+            @if($voyage->isLikedBy(Auth::user()))
+                <img src="{{ asset('resources/images/Heart plein.svg') }}" alt="Liked">
+            @else
+                <img src="{{ asset('resources/images/Heart.svg') }}" alt="Not Liked">
+            @endif
         </button>
         <span class="like-count">{{ $voyage->likes->count() }}</span>
     </div>

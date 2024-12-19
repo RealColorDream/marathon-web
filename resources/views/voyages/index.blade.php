@@ -103,8 +103,10 @@
                                 const likeCountElement = button.nextElementSibling;
                                 likeCountElement.textContent = data.likes_count;
 
-                                // Update the button state (emoji and class)
-                                button.textContent = data.is_liked ? '❤' : '🖤️';
+                                // Update the button state (SVG and class)
+                                button.innerHTML = data.is_liked
+                                    ? '<img src="{{ asset('resources/images/Heart plein.svg') }}" alt="Liked">'
+                                    : '<img src="{{ asset('resources/images/Heart.svg') }}" alt="Not Liked">';
                                 button.classList.toggle('liked', data.is_liked);
                             } else {
                                 console.error('Unexpected content type:', contentType);
