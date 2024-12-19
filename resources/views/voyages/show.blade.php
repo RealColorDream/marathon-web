@@ -26,8 +26,7 @@
             <ul class="uk-list uk-list-divider">
                 @foreach($voyage->etapes as $etape)
                     <li>
-                        <strong>{{ $etape->titre }}</strong> ({{ $etape->debut }} - {{ $etape->fin }})
-                        <p>{{ $etape->description }}</p>
+                        @include('components.step-card', ['etape' => $etape])
                     </li>
                 @endforeach
             </ul>
@@ -119,6 +118,24 @@
                     document.getElementById('contenu').value = '';
                 })
                 .catch(error => console.error(error));
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('.toggle-description');
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetId = button.getAttribute('data-target');
+                    const description = document.getElementById(targetId);
+
+                    if (description.classList.contains('uk-hidden')) {
+                        description.classList.remove('uk-hidden');
+                        button.textContent = 'Masquer la description';
+                    } else {
+                        description.classList.add('uk-hidden');
+                        button.textContent = 'Afficher la description';
+                    }
+                });
+            });
         });
     </script>
 @endsection
