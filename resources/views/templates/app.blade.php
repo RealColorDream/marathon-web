@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>{{ $title ?? "Page en cours" }}</title>
@@ -17,6 +17,7 @@
     @stack('css auth')
     @stack("css profile")
     @stack("css voyage")
+    @stack('css 404')
     {{--@stack("css")--}}
 </head>
 <body>

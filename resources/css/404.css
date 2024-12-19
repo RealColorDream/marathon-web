@@ -1,0 +1,36 @@
+body {
+    /*    background: rgb(103,207,255);*/
+    background: /*linear-gradient(180deg, rgba(103,207,255,1) 0%, rgba(169,205,251,1) 100%)*/
+            bottom 0 right 0  url('/resources/images/montagne2.svg'),
+            bottom 0 left 0 url('/resources/images/montagne1.svg'),
+            top 40% left 15% url('/resources/images/nuage1.svg'),
+            top 80% right 20% url('/resources/images/nuage2.svg'),
+            linear-gradient(180deg, rgba(103,207,255,1) 0%, rgba(169,205,251,1) 100%);
+    background-repeat: no-repeat;
+}
+
+.container {
+    padding-bottom: 20vh;
+    font-family: 'Oswald-Extra-Light';
+}
+
+.container p, .container h1 {
+    margin-top: 5px;
+    font-size: 32px;
+}
+
+.container h1 {
+    font-size: 44px;
+    color: #FF8D29;
+    font-family: 'Newwake';
+    margin-bottom: 8px;
+}
+
+.container p {
+    color: black;
+}
+
+#img404 {
+    width: 768px;
+    margin-bottom: 8px;
+}
