@@ -22,6 +22,13 @@
             </div>
         @endif
 
+        {{-- Section des résultats de recherche --}}
+        <div class="search-results">
+            @if($search)
+                <h2>Résultats de recherche pour "{{ $search }}" :</h2>
+            @endif
+        </div>
+
         {{-- Section des voyages publics --}}
         <h1><span>Nos Voyages Publics</span></h1>
         <div>
