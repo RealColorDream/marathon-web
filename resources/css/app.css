@@ -198,6 +198,41 @@ nav ul {
     height: 50%;
 }
 
+.etapes-list{
+    margin-top: 96px;
+}
+.etapes-list li {
+    list-style-type: none;
+    text-align: left;
+    color: black;
+    font-size: 2em;
+}
+.etapes-list a {
+    font-weight: lighter;
+    color: black;
+    text-decoration: #000000 solid underline;
+
+}
+
+
+
+.etapes-list a:hover {
+    color: #FF8D29;
+    text-decoration: #FF8D29 solid underline;
+}
+
+.voyage-resume{
+    text-align: left;
+    color: #222222;
+}
+.voyage-description{
+    text-align: left;
+    font-size: 1.5em;
+    color: black;
+    font-weight: bold;
+
+}
+
 /* fomulaires de login et register*/
 /* .login-form>form>div{
     display: flex;

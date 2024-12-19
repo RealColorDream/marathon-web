@@ -1,5 +1,9 @@
 @extends('templates.app')
 
+@push('css voyage')
+    @vite('resources/css/voyage.css')
+@endpush
+
 @section('title', $etape->titre)
 
 @section('content')
