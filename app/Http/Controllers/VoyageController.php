@@ -113,5 +113,23 @@ class VoyageController extends Controller
 
         return view('voyages.continent', compact('voyages', 'continent', 'continents'));
     }
+
+    public function toggleLike(Request $request, Voyage $voyage)
+    {
+        $user = $request->user();
+
+        if ($voyage->isLikedBy($user)) {
+            $voyage->likes()->detach($user->id);
+            $isLiked = false;
+        } else {
+            $voyage->likes()->attach($user->id);
+            $isLiked = true;
+        }
+
+        return response()->json([
+            'is_liked' => $isLiked,
+            'likes_count' => $voyage->likes()->count(),
+        ]);
+    }
 }
 
