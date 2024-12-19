@@ -21,6 +21,7 @@
     @stack("css profile")
     @stack("css voyage")
     @stack('css 404')
+    @stack('css show-etape')
     {{--@stack("css")--}}
 </head>
 <body>
@@ -31,7 +32,7 @@
     @yield("content")
 </main>
 
-<x-footer/>
+{{--<x-footer/>--}}
 @stack('css voyage')
 @stack('scripts')
 </body>

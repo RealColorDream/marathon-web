@@ -1,7 +1,7 @@
 @extends('templates.app')
 
-@push('css voyage')
-    @vite('resources/css/voyage.css')
+@push('css show-etape')
+    @vite('resources/css/show-etape.css')
 @endpush
 
 @section('title', $etape->titre)
@@ -10,7 +10,7 @@
     <div class="uk-container uk-margin-large-top">
         <h1 class="uk-heading-line"><span>{{ $etape->titre }}</span></h1>
 
-        <div class="uk-grid-small uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid>
+        <div class="uk-grid-small uk-child-width-1-2@s uk-child-width-1-3@m start" uk-grid>
             <div>
                 <div class="uk-card uk-card-default uk-card-hover uk-card-body">
                     @if($etape->image)
