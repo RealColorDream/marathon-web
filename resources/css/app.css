@@ -69,7 +69,11 @@ main{
     display: inline-flex;
 }
 
-
+main{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
 
 .search-container {
     font-family: Oswald-Regular;
