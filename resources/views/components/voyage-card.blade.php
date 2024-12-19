@@ -15,9 +15,9 @@
         <button class="like-button {{ $voyage->isLikedBy(Auth::user()) ? 'liked' : '' }}"
                 data-voyage-id="{{ $voyage->id }}">
             @if($voyage->isLikedBy(Auth::user()))
-                <img src="{{ asset('resources/images/Heart plein.svg') }}" alt="Liked">
+                <img src="{{ Vite::asset('resources/images/Heart plein.svg') }}" alt="Liked">
             @else
-                <img src="{{ asset('resources/images/Heart.svg') }}" alt="Not Liked">
+                <img src="{{ Vite::asset('resources/images/Heart.svg') }}" alt="Not Liked">
             @endif
         </button>
         <span class="like-count">{{ $voyage->likes->count() }}</span>
