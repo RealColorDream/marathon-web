@@ -15,7 +15,10 @@
         @vite(["resources/css/normalize.css", "resources/css/app.css", "resources/js/app.js"])
     @show
     @stack('css auth')
+    @stack("css profile")
+    @stack("css voyage")
     @stack('css 404')
+    {{--@stack("css")--}}
 </head>
 <body>
 
