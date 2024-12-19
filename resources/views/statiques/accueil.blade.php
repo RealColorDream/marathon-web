@@ -33,8 +33,9 @@
 @endsection
 
 <div class="road">
+    <!--{{$i = 1}}-->
     @foreach($voyages as $voyage)
-        <div class="accueil-voyage-card-container">
+        <div class="accueil-voyage-card-container card-number-{{$i++}}">
             <a href="{{ route('voyages.show', $voyage->id) }}">
             <div class="accueil-voyage-card">
                 <h3>{{$voyage->titre}}</h3>
