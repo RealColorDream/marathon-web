@@ -18,6 +18,10 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    @stack("css profile")
+    @stack("css voyage")
+    @stack('css 404')
+    {{--@stack("css")--}}
 </head>
 <body>
 
@@ -27,9 +31,7 @@
     @yield("content")
 </main>
 
-<footer>
-    <p>IUT de Lens</p>
-</footer>
+<x-footer/>
 @stack('css voyage')
 @stack('scripts')
 </body>

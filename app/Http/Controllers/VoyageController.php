@@ -9,25 +9,37 @@ use Illuminate\Support\Facades\Auth;
 
 class VoyageController extends Controller
 {
-    public function index()
-    {
-        // Si l'utilisateur est connecté
-        if (Auth::check()) {
-            $voyagesPrives = Voyage::where('user_id', Auth::id())
-                ->where('en_ligne', false)
-                ->get(); // Voyages non publiés
+  public function index(Request $request)
+  {
+    $search = $request->query('search');
 
-            $voyagesPublics = Voyage::where('en_ligne', true)->get(); // Voyages publics
-        } else {
-            // Seulement les voyages publics pour les visiteurs
-            $voyagesPublics = Voyage::where('en_ligne', true)->get();
-            $voyagesPrives = collect(); // Collection vide
-        }
+    if (Auth::check()) {
+      $voyagesPrives = Voyage::where('user_id', Auth::id())
+          ->where('en_ligne', false)
+          ->when($search, function ($query, $search) {
+            $query->where('titre', 'LIKE', '%' . $search . '%');
+          })
+          ->get();
 
-        return view('voyages.index', compact('voyagesPublics', 'voyagesPrives'));
+      $voyagesPublics = Voyage::where('en_ligne', true)
+          ->when($search, function ($query, $search) {
+            $query->where('titre', 'LIKE', '%' . $search . '%');
+          })
+          ->get();
+    } else {
+      $voyagesPublics = Voyage::where('en_ligne', true)
+          ->when($search, function ($query, $search) {
+            $query->where('titre', 'LIKE', '%' . $search . '%');
+          })
+          ->get();
+
+      $voyagesPrives = collect();
     }
 
-    public function show($id)
+    return view('voyages.index', compact('voyagesPublics', 'voyagesPrives', 'search'));
+  }
+
+  public function show($id)
     {
         // Vérifier que le voyage existe et que l'utilisateur a le droit d'y accéder
         $voyage = Voyage::findOrFail((int) $id);
