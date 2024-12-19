@@ -15,10 +15,10 @@
                             <img src="{{ $media->url }}" alt="{{ $etape->titre }}" class="uk-width-1-1 uk-margin-small-bottom">
                         @endforeach
                         <h3 class="uk-card-title">{{ $etape->titre }}</h3>
-                        <a href="{{ route('etape.show', $etape->id) }}" class="uk-button uk-button-primary">Voir l'étape</a>
+                        <a href="{{ route('etapes.show', $etape->id) }}" class="uk-button uk-button-primary">Voir l'étape</a>
                         <p>{{$etape->resume}}</p>
                         <div class="uk-margin">
-                            <form action="{{ route('etape.destroy', $etape->id) }}" method="POST">
+                            <form action="{{ route('etapes.destroy', $etape->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="uk-button uk-button-danger">Supprimer</button>

@@ -1,14 +1,15 @@
 @extends('templates.app')
 
-@push('css voyage')
-    @vite('resources/css/voyage.css')
+@push('css')
+    @vite('resources/css/accueil.css')
 @endpush
 
 
 @section('title', 'Accueil')
+<div class="scrolling-bg"><div class="scrolling-bg-image scrolling-bg-image1"></div><div class="scrolling-bg-image scrolling-bg-image2"></div></div>
 
 @section('content')
-    <div class="uk-container uk-margin-large-top">
+    <div class="uk-container uk-margin-large-top truc">
         <div class="search-box">
             <form method="GET" action="{{ route('voyages.index') }}">
                 <div class="search-container">
