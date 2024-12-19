@@ -43,7 +43,7 @@
 
         @if($voyage->visuel)
             <br/>
-            <img src="{{ asset('storage/' . $voyage->visuel) }}" alt="{{ $voyage->titre }}" class="uk-width-1-1 uk-margin-bottom">
+            <img src="{{ $voyage->visuel }}" alt="{{ $voyage->titre }}" class="voyage-img uk-margin-bottom uk-margin-top">
         @endif
 
         <h2 class="uk-heading-line"><span>Avis et Likes</span></h2>
