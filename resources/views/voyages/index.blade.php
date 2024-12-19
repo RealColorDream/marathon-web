@@ -75,12 +75,10 @@
 @push('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            console.log('DOM fully loaded and parsed');
             document.querySelectorAll('.like-button').forEach(button => {
                 button.addEventListener('click', async (event) => {
                     const button = event.currentTarget;
                     const voyageId = button.getAttribute('data-voyage-id');
-                    console.log('Button clicked for voyage ID:', voyageId);
 
                     try {
                         const response = await fetch(`/voyages/${voyageId}/like`, {
@@ -91,13 +89,11 @@
                             },
                         });
 
-                        console.log('Response status:', response.status);
 
                         if (response.ok) {
                             const contentType = response.headers.get('Content-Type');
                             if (contentType && contentType.includes('application/json')) {
                                 const data = await response.json();
-                                console.log('Response data:', data);
 
                                 // Update the like count
                                 const likeCountElement = button.nextElementSibling;
