@@ -57,7 +57,7 @@ class EtapeController extends Controller
         // Création de l'étape
         $etape = $etapeRepository->create($data);
 
-        return redirect()->route('etape.index')->with('success', 'Étape créée avec succès.');
+        return redirect()->route('etapes.index')->with('success', 'Étape créée avec succès.');
     }
 
     /**
@@ -101,6 +101,6 @@ class EtapeController extends Controller
         $etape = $this->etapeRepository->find($id_etape);
         $etape->delete();
 
-        return redirect()->route('etape.index');
+        return redirect()->route('etapes.index');
     }
 }
