@@ -51,6 +51,11 @@ nav a {
     text-decoration: #000000 none;
 }
 
+main{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
 .navbar-button {
     border: #000000 solid 4px;
     padding: 8px;
