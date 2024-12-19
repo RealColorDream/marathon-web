@@ -3,8 +3,12 @@
     --bg-height: 90vh;
 }
 
-body {
+.scrolling-bg {
+    position: relative;
+    top: 0;
+    min-height: var(--bg-height);
     height: var(--bg-height);
+    max-height: var(--bg-height);
     background: url('/resources/images/biomes.png') repeat-x 0 0;
     background-size: cover;
     background-position: center;
@@ -16,6 +20,25 @@ body {
     -moz-animation-timing-function:    linear;
     -o-animation-timing-function:      linear;
     animation-timing-function:         linear;
+    z-index: 1;
+}
+nav , main{
+    position: relative;
+    top: -90vh;
+    min-height: 20vh;
+    background: transparent !important;
+    z-index: 2;
+}
+
+.road{
+    position: absolute;
+    top:47vh;
+    left: 0px;
+    background: url('/resources/images/fond_accueil.png') 0 0;
+    background-size: cover;
+    width: 100vw;
+    min-height: 200vh;
+    z-index: 3;
 }
 
 /* Animations */
